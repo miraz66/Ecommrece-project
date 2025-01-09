@@ -9,6 +9,7 @@ import {
 import logo from "../assets/boria_1.png";
 import { Link } from "@inertiajs/react";
 import { useState } from "react";
+import DropDown from "./DropDown";
 
 const navigation = [
     { name: "Home", href: "#" },
@@ -68,6 +69,13 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                                         </svg>
                                     )}
                                 </Link>
+
+                                {item.name === "Shop" && (
+                                    <DropDown
+                                        item={item}
+                                        shopDropdownOpen={shopDropdownOpen}
+                                    />
+                                )}
                             </div>
                         ))}
                     </div>

@@ -1,3 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --background-primary-color: 250, 250, 249; /*#fafaf9 */
+    /*--background-secondary-color: 203, 132, 97; /* #CB8461 */
+    --background-dark-color: 24, 24, 27; /* #18181b */
+    /*--background-extra-muted-color: 242, 231, 219; /* #F2E7DB */
+    --text-primary-color: 36, 93, 81; /* #171717 */
+    --text-secondary-color: 64, 64, 64; /* #404040 */
+    --text-primary-dark-color: 255, 255, 255; /* #f4f4f5 */
+    --text-secondary-dark-color: 160, 160, 170; /* #a1a1aa */
+    /*--text-muted-color: 128, 128, 128; /* #808080 */
+    /*--text-current-color: 44, 44, 44; /* #2C2C2C */
+    --button-primary-color: 255, 255, 255; /* #f4f4f5 */
+    --button-secondary-color: 255, 255, 255; /* #f4f4f5 */
+    --button-primary-hover-color: 223, 33, 33; /* #DF2121 */
+    --button-secondary-hover-color: 255, 255, 255; /* #f4f4f5 */
+}

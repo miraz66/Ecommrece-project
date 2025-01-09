@@ -2,11 +2,13 @@ import { Dialog, DialogPanel } from "@headlessui/react";
 import {
     Bars3Icon,
     HeartIcon,
+    MagnifyingGlassIcon,
     ShoppingCartIcon,
     XMarkIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../assets/boria_1.png";
 import { Link } from "@inertiajs/react";
+import { useState } from "react";
 
 const navigation = [
     { name: "Home", href: "#" },
@@ -17,17 +19,58 @@ const navigation = [
 ];
 
 export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
+    const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
+
     return (
         <header className="absolute inset-x-0 top-0 z-50 max-w-[1500px] mx-auto">
             <nav
                 aria-label="Global"
-                className="flex items-center justify-between p-6 lg:px-8"
+                className="flex items-center justify-between"
             >
-                <div className="flex lg:flex-1">
+                <div className="flex lg:flex-1 justify-between items-center">
                     <a href="#" className="-m-1.5 p-1.5">
                         <span className="sr-only">Your Company</span>
                         <img alt="" src={logo} className="h-8 w-auto" />
                     </a>
+
+                    <div className="hidden lg:flex lg:gap-x-12">
+                        {navigation.map((item) => (
+                            <div
+                                key={item.name}
+                                className="relative group"
+                                onMouseEnter={() =>
+                                    item.name === "Shop" &&
+                                    setShopDropdownOpen(true)
+                                }
+                                onMouseLeave={() =>
+                                    item.name === "Shop" &&
+                                    setShopDropdownOpen(false)
+                                }
+                            >
+                                <Link
+                                    to={item.href}
+                                    className="text-sm font-bold text-white flex py-4 lg:py-6"
+                                >
+                                    {item.name}
+                                    {item.down && (
+                                        <svg
+                                            aria-hidden="true"
+                                            className="ms-1 h-5 w-5 flex-none"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                    )}
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 <div className="flex lg:hidden">
                     <button
@@ -39,41 +82,30 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                         <Bars3Icon aria-hidden="true" className="size-6" />
                     </button>
                 </div>
-                <div className="hidden lg:flex lg:gap-x-12">
-                    {navigation.map((item) => (
-                        <Link
-                            key={item.name}
-                            to={item.href}
-                            className="text-sm font-bold text-white flex"
-                        >
-                            {item.name}
+                <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-20">
+                    <div className="w-2/4 flex gap-1 justify-between items-center">
+                        <label htmlFor="search">
+                            <MagnifyingGlassIcon
+                                aria-hidden="true"
+                                className="size-6 text-gray-200 font-bold hover:text-red-600 cursor-pointer"
+                            />
+                        </label>
+                        <input
+                            type="text"
+                            id="search"
+                            placeholder="Search for products..."
+                            className="w-full px-3 py-1.5 bg-transparent text-gray-200 placeholder-gray-200 placeholder:text-sm border-none rounded-md focus:outline-none focus:ring-red-600 focus:border-red-600"
+                        />
+                    </div>
 
-                            {item.down && (
-                                <svg
-                                    aria-hidden="true"
-                                    className="ms-1 h-5 w-5 flex-none"
-                                    fill="currentColor"
-                                    viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clipRule="evenodd"
-                                    />
-                                </svg>
-                            )}
-                        </Link>
-                    ))}
-                </div>
-                <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                     <div className="flex gap-4">
                         <div className="relative">
                             <HeartIcon
                                 aria-hidden="true"
-                                className="size-7 text-white font-bold hover:text-red-600 cursor-pointer"
+                                className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
                             />
-                            <span className="absolute top-0 right-0 inline-flex items-center justify-center rounded-full bg-red-600 w-4 h-4 text-xs font-semibold text-white">
+
+                            <span className="absolute bottom-0 right-0 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
                                 0
                             </span>
                         </div>
@@ -81,16 +113,17 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                         <div className="relative">
                             <ShoppingCartIcon
                                 aria-hidden="true"
-                                className="size-7 text-white font-bold hover:text-red-600 cursor-pointer"
+                                className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
                             />
-                            <span className="absolute top-0 right-0 inline-flex items-center justify-center rounded-full bg-red-600 w-4 h-4 text-xs font-semibold text-white">
+
+                            <span className="absolute bottom-0 right-0 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
                                 0
                             </span>
                         </div>
 
                         <Bars3Icon
                             aria-hidden="true"
-                            className="size-7 text-white font-bold hover:text-red-600 cursor-pointer"
+                            className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
                         />
                     </div>
                 </div>

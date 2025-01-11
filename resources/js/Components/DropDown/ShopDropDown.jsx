@@ -1,7 +1,6 @@
 import { Link } from "@inertiajs/react";
-import React from "react";
-import banner1 from "../assets/banner1.jpg";
-import banner2 from "../assets/banner2.jpg";
+import banner1 from "@/assets/banner1.jpg";
+import banner2 from "@/assets/banner2.jpg";
 import clsx from "clsx";
 
 const DropDownValue = [
@@ -41,15 +40,15 @@ const DropDownValue = [
     },
 ];
 
-export default function DropDown({ item, shopDropdownOpen }) {
+export default function ShopDropDown({ item, dropdownOpen }) {
     return (
-        <div>
+        <>
             <div className="relative">
                 {item.name === "Shop" && (
                     <div
                         className={clsx(
-                            "absolute right-0 transform -translate-x-1/3 inset-x-1/2 z-10 w-screen overflow-hidden bg-white transition-all duration-500 ease-in-out",
-                            shopDropdownOpen ? "max-h-96" : "max-h-0"
+                            "absolute right-0 transform -translate-x-1/3 inset-x-1/2 z-10 w-screen overflow-hidden bg-white transition-all duration-700 ease-in-out",
+                            dropdownOpen === item.name ? "max-h-96" : "max-h-0"
                         )}
                     >
                         <div className="py-6 flex justify-start max-w-[1500px] mx-auto">
@@ -88,6 +87,6 @@ export default function DropDown({ item, shopDropdownOpen }) {
                     </div>
                 )}
             </div>
-        </div>
+        </>
     );
 }

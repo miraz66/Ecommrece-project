@@ -9,7 +9,10 @@ import {
 import logo from "../assets/boria_1.png";
 import { Link } from "@inertiajs/react";
 import { useState } from "react";
-import DropDown from "./DropDown";
+import DropDown from "./DropDown/ShopDropDown";
+import PageDropDown from "./DropDown/PageDropDown";
+import CartDropDown from "./DropDown/CartDropDown";
+import MenuDropDown from "./DropDown/MenuDropDown";
 
 const navigation = [
     { name: "Home", href: "#" },
@@ -20,10 +23,10 @@ const navigation = [
 ];
 
 export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
-    const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState("");
 
     return (
-        <header className="absolute inset-x-0 top-0 z-50 max-w-[1500px] mx-auto">
+        <header className="absolute inset-x-0 top-0 z-50 max-w-8xl mx-auto">
             <nav
                 aria-label="Global"
                 className="flex items-center justify-between"
@@ -38,15 +41,19 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                         {navigation.map((item) => (
                             <div
                                 key={item.name}
-                                className="relative group"
-                                onMouseEnter={() =>
+                                className="relative"
+                                onMouseEnter={() => {
                                     item.name === "Shop" &&
-                                    setShopDropdownOpen(true)
-                                }
-                                onMouseLeave={() =>
-                                    item.name === "Shop" &&
-                                    setShopDropdownOpen(false)
-                                }
+                                        setDropdownOpen(item.name);
+
+                                    item.name === "Page" &&
+                                        setDropdownOpen(item.name);
+                                }}
+                                onMouseLeave={() => {
+                                    item.name === "Shop" && setDropdownOpen("");
+
+                                    item.name === "Page" && setDropdownOpen("");
+                                }}
                             >
                                 <Link
                                     to={item.href}
@@ -73,8 +80,17 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                                 {item.name === "Shop" && (
                                     <DropDown
                                         item={item}
-                                        shopDropdownOpen={shopDropdownOpen}
+                                        dropdownOpen={dropdownOpen}
                                     />
+                                )}
+
+                                {item.name === "Page" && (
+                                    <div>
+                                        <PageDropDown
+                                            item={item}
+                                            dropdownOpen={dropdownOpen}
+                                        />
+                                    </div>
                                 )}
                             </div>
                         ))}
@@ -90,6 +106,7 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                         <Bars3Icon aria-hidden="true" className="size-6" />
                     </button>
                 </div>
+
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-20">
                     <div className="w-2/4 flex gap-1 justify-between items-center">
                         <label htmlFor="search">
@@ -106,33 +123,64 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                         />
                     </div>
 
-                    <div className="flex gap-4">
-                        <div className="relative">
-                            <HeartIcon
+                    <div className="flex gap-4 items-center">
+                        <div>
+                            <div className="relative">
+                                <HeartIcon
+                                    aria-hidden="true"
+                                    className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
+                                />
+
+                                <span className="absolute -bottom-1 -right-1 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
+                                    0
+                                </span>
+                            </div>
+                        </div>
+
+                        <div
+                            onMouseMove={() => {
+                                setDropdownOpen("cart");
+                            }}
+                            onMouseLeave={() => {
+                                setDropdownOpen("");
+                            }}
+                            className="relative py-5"
+                        >
+                            <div className="relative">
+                                <ShoppingCartIcon
+                                    aria-hidden="true"
+                                    className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
+                                />
+
+                                <p className="absolute -bottom-1 -right-1 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
+                                    0
+                                </p>
+                            </div>
+                            <CartDropDown
+                                item="cart"
+                                dropdownOpen={dropdownOpen}
+                            />
+                        </div>
+
+                        <div
+                            className="relative"
+                            onMouseMove={() => {
+                                setDropdownOpen("menu");
+                            }}
+                            onMouseLeave={() => {
+                                setDropdownOpen("");
+                            }}
+                        >
+                            <Bars3Icon
                                 aria-hidden="true"
                                 className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
                             />
 
-                            <span className="absolute bottom-0 right-0 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
-                                0
-                            </span>
-                        </div>
-
-                        <div className="relative">
-                            <ShoppingCartIcon
-                                aria-hidden="true"
-                                className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
+                            <MenuDropDown
+                                item="menu"
+                                dropdownOpen={dropdownOpen}
                             />
-
-                            <span className="absolute bottom-0 right-0 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
-                                0
-                            </span>
                         </div>
-
-                        <Bars3Icon
-                            aria-hidden="true"
-                            className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
-                        />
                     </div>
                 </div>
             </nav>

@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-    --background-primary-color: 250, 250, 249; /*#fafaf9 */
-    /*--background-secondary-color: 203, 132, 97; /* #CB8461 */
+    --background-primary-color: 241, 245, 249; /* #f5f5f5 */
+    --background-secondary-color: 24, 24, 24; /* #181818 */
     --background-dark-color: 24, 24, 27; /* #18181b */
     /*--background-extra-muted-color: 242, 231, 219; /* #F2E7DB */
     --text-primary-color: 36, 93, 81; /* #171717 */

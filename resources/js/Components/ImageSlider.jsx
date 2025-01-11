@@ -54,7 +54,7 @@ const ImageSlider = () => {
                 {properties.map((property, index) => (
                     <div
                         key={index}
-                        className="relative bg-gray-200 py-32 text-3xl min-h-[60rem]"
+                        className="relative bg-gray-200 py-32 text-3xl min-h-[60rem] select-none"
                         style={{
                             backgroundImage: `url(${property.image})`,
                             backgroundSize: "cover",
@@ -116,7 +116,7 @@ const ImageSlider = () => {
                                         currentSlide === index
                                             ? "translate-x-0 opacity-100"
                                             : "translate-y-10 opacity-0",
-                                        "transition-transform duration-700"
+                                        "transition-transform duration-700 ease-in-out"
                                     )}
                                 >
                                     Shop Now

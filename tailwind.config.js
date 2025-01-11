@@ -28,7 +28,7 @@ export default {
             },
             backgroundColor: {
                 primary: withOpacity("--background-primary-color"),
-                // secondary: withOpacity('--background-secondary-color'),
+                secondary: withOpacity("--background-secondary-color"),
                 dark: withOpacity("--background-dark-color"),
                 // extra: withOpacity('--background-extra-muted-color'),
                 button_primary: withOpacity("--button-primary-color"),
@@ -47,6 +47,9 @@ export default {
                 secondary_dark: withOpacity("--text-secondary-dark-color"),
                 //   current: withOpacity('--text-current-color'),
                 //   muted: withOpacity('--text-muted-color'),
+            },
+            maxWidth: {
+                "8xl": "1500px",
             },
         },
     },

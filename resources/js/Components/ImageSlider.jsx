@@ -4,6 +4,7 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import slideImage from "../assets/slider1-store1.jpg";
 import slideImage2 from "../assets/slider2-store1.jpg";
+import PrimaryButton from "./PrimaryButton";
 
 const properties = [
     {
@@ -109,10 +110,9 @@ const ImageSlider = () => {
                                     </p>
                                 </div>
 
-                                <button
-                                    type="button"
+                                <PrimaryButton
                                     className={clsx(
-                                        "mt-8 inline-block rounded-md border border-transparent bg-button_primary px-8 py-3 text-center text-base font-semibold text-gray-950 hover:bg-button_primary_hover",
+                                        "mt-8 py-3 px-8",
                                         currentSlide === index
                                             ? "translate-x-0 opacity-100"
                                             : "translate-y-10 opacity-0",
@@ -120,7 +120,7 @@ const ImageSlider = () => {
                                     )}
                                 >
                                     Shop Now
-                                </button>
+                                </PrimaryButton>
                             </div>
                         </div>
                     </div>

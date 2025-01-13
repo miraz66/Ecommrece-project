@@ -33,34 +33,37 @@ const data = [
 export default function Opportunity() {
     return (
         <>
-            <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-8xl lg:px-8 grid grid-cols-4 gap-10">
-                {data.map((item) => (
-                    <div key={item.title} className="mt-12 w-full h-full">
-                        <div className="group relative">
-                            <div className="flex justify-center items-center">
-                                <img
-                                    src={item.image}
-                                    alt={item.title}
-                                    className="h-20 w-20 flex-shrink-0 object-cover object-center"
-                                />
-                            </div>
-                            <div className="space-y-2 text-center pt-5">
-                                <h3 className="text-lg uppercase tracking-tight font-medium text-gray-700">
-                                    <a href="#">
-                                        <span
-                                            aria-hidden="true"
-                                            className="absolute inset-0"
-                                        />
-                                        {item.title}
-                                    </a>
-                                </h3>
-                                <p className="mt-1 text-sm text-gray-500 leading-6">
-                                    {item.description}
-                                </p>
+            <div className="mx-auto max-w-2xl lg:max-w-8xl lg:px-8">
+                <div className="grid grid-cols-4 gap-10 py-16 px-4 sm:py-24 sm:px-6">
+                    {data.map((item) => (
+                        <div key={item.title} className="mt-12 w-full h-full">
+                            <div className="group relative">
+                                <div className="flex justify-center items-center">
+                                    <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        className="h-20 w-20 flex-shrink-0 object-cover object-center"
+                                    />
+                                </div>
+                                <div className="space-y-2 text-center pt-5">
+                                    <h3 className="text-lg uppercase tracking-tight font-medium text-gray-700">
+                                        <a href="#">
+                                            <span
+                                                aria-hidden="true"
+                                                className="absolute inset-0"
+                                            />
+                                            {item.title}
+                                        </a>
+                                    </h3>
+                                    <p className="mt-1 text-sm text-gray-500 leading-6">
+                                        {item.description}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
+                <hr />
             </div>
         </>
     );

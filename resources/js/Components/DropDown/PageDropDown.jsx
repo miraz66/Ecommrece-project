@@ -26,7 +26,7 @@ export default function PageDropDown({ item, dropdownOpen }) {
                                 <Link
                                     key={index}
                                     href={item}
-                                    className="text-sm text-gray-700 hover:text-red-600 hover:pl-1 duration-200 ease-in-out dark:text-gray-400 dark:hover:text-white"
+                                    className="text-sm text-gray-500 hover:text-red-600 hover:pl-1 duration-200 ease-in-out dark:text-gray-400 dark:hover:text-white"
                                 >
                                     {item}
                                 </Link>

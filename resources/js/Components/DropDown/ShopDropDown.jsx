@@ -66,7 +66,7 @@ export default function ShopDropDown({ item, dropdownOpen }) {
                                                 <Link
                                                     key={index}
                                                     href={value}
-                                                    className="text-sm text-gray-500 font-medium hover:text-red-600 hover:pl-1 duration-200 ease-in-out dark:text-gray-400 dark:hover:text-white"
+                                                    className="text-sm text-gray-500 tracking-wide hover:text-red-600 hover:pl-1 duration-200 ease-in-out dark:text-gray-400 dark:hover:text-white"
                                                 >
                                                     {value}
                                                 </Link>

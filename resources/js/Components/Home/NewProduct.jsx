@@ -1,10 +1,4 @@
-import { StarIcon } from "@heroicons/react/24/solid";
 import ProductImage from "@/assets/products-1-min.jpg";
-import {
-    HeartIcon,
-    MagnifyingGlassIcon,
-    ShoppingBagIcon,
-} from "@heroicons/react/24/outline";
 import ProductCard from "./ProductCard";
 
 const data = [

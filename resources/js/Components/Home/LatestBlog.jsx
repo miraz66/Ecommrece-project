@@ -72,7 +72,7 @@ export default function LatestBlog() {
                     </h3>
                     <p className="mt-2 text-gray-600 text-sm">View All Post</p>
                 </div>
-                <div className="relative mt-12">
+                <div className="relative">
                     <Slide
                         slidesToScroll={2}
                         slidesToShow={3}

@@ -34,7 +34,7 @@ export default function Opportunity() {
     return (
         <>
             <div className="mx-auto max-w-2xl lg:max-w-8xl lg:px-8">
-                <div className="grid grid-cols-4 gap-10 py-16 px-4 sm:py-24 sm:px-6">
+                <div className="md:grid grid-cols-4 gap-10 py-16 px-4 sm:py-24 sm:px-6">
                     {data.map((item) => (
                         <div key={item.title} className="mt-12 w-full h-full">
                             <div className="group relative">

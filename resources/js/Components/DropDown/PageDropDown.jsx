@@ -21,7 +21,7 @@ export default function PageDropDown({ item, dropdownOpen }) {
                             dropdownOpen === item.name ? "max-h-96" : "max-h-0"
                         )}
                     >
-                        <div className="p-4 flex flex-col gap-2 w-48">
+                        <div className="p-4 flex flex-col gap-3 w-48">
                             {DropDownValue.map((item, index) => (
                                 <Link
                                     key={index}

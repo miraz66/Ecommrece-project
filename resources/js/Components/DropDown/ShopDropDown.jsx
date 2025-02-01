@@ -56,12 +56,12 @@ export default function ShopDropDown({ item, dropdownOpen }) {
                                 {DropDownValue.map((item, index) => (
                                     <div
                                         key={index}
-                                        className="flex flex-col gap-2"
+                                        className="flex flex-col gap-3"
                                     >
                                         <p className="text-sm font-semibold uppercase tracking-tight text-gray-900 dark:text-white">
                                             {item.title}
                                         </p>
-                                        <div className="flex flex-col gap-2">
+                                        <div className="flex flex-col gap-3">
                                             {item.value.map((value, index) => (
                                                 <Link
                                                     key={index}

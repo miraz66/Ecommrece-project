@@ -50,7 +50,7 @@ const ProductGrid = () => {
                         </button>
                     </div>
                 </div>
-                <div className="flex justify-between min-h-[25rem]">
+                <div className="md:flex justify-between min-h-[25rem]">
                     <img src={banner4} className="h-full" alt="Banner image" />
                     <img src={banner3} className="h-full" alt="Banner image" />
                 </div>

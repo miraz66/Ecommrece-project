@@ -15,17 +15,17 @@ export default function Home() {
     return (
         <>
             <Head title="Home" />
-            <div>
+            <div className="bg-gray-700">
                 <Hero />
-                <Opportunity />
-                <PopularCategories />
+                {/* <Opportunity /> */}
+                {/* <PopularCategories />
                 <ProductGrid />
                 <NewProduct />
                 <SummerDiscountBlog />
                 <LatestBlog />
                 <ProductCategories />
                 <ImageCarousel />
-                <Footer />
+                <Footer /> */}
             </div>
         </>
     );

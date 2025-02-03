@@ -97,10 +97,50 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                     </div>
                 </div>
                 <div className="flex lg:hidden">
+                    <div className="flex gap-4 items-center">
+                        <div>
+                            <div className="relative">
+                                <HeartIcon
+                                    aria-hidden="true"
+                                    className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
+                                />
+
+                                <span className="absolute -bottom-1 -right-1 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
+                                    0
+                                </span>
+                            </div>
+                        </div>
+
+                        <div
+                            onMouseMove={() => {
+                                setDropdownOpen("cart");
+                            }}
+                            onMouseLeave={() => {
+                                setDropdownOpen("");
+                            }}
+                            className="relative py-5"
+                        >
+                            <div className="relative">
+                                <ShoppingCartIcon
+                                    aria-hidden="true"
+                                    className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
+                                />
+
+                                <p className="absolute -bottom-1 -right-1 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
+                                    0
+                                </p>
+                            </div>
+                            <CartDropDown
+                                item="cart"
+                                dropdownOpen={dropdownOpen}
+                            />
+                        </div>
+                    </div>
+
                     <button
                         type="button"
                         onClick={() => setMobileMenuOpen(true)}
-                        className="lg:-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                        className="lg:-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-100"
                     >
                         <span className="sr-only">Open main menu</span>
                         <Bars3Icon aria-hidden="true" className="size-6" />

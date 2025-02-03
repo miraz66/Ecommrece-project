@@ -34,15 +34,18 @@ export default function Opportunity() {
     return (
         <>
             <div className="mx-auto max-w-2xl lg:max-w-8xl lg:px-8">
-                <div className="md:grid grid-cols-4 gap-10 py-16 px-4 sm:py-24 sm:px-6">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-10 py-16 px-4 sm:py-24 sm:px-6">
                     {data.map((item) => (
-                        <div key={item.title} className="mt-12 w-full h-full">
+                        <div
+                            key={item.title}
+                            className="mt-4 lg:mt-12 w-full h-full"
+                        >
                             <div className="group relative">
                                 <div className="flex justify-center items-center">
                                     <img
                                         src={item.image}
                                         alt={item.title}
-                                        className="h-20 w-20 flex-shrink-0 object-cover object-center"
+                                        className="w-14 lg:h-20 h-14 lg:w-20 flex-shrink-0 object-cover object-center"
                                     />
                                 </div>
                                 <div className="space-y-2 text-center pt-5">

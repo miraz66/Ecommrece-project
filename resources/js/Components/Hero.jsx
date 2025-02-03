@@ -12,9 +12,7 @@ export default function Hero() {
                 setMobileMenuOpen={setMobileMenuOpen}
             />
 
-            <div>
-                <ImageSlider />
-            </div>
+            <ImageSlider />
         </div>
     );
 }

@@ -37,7 +37,7 @@ export default function PopularCategories() {
                 <p className="mt-4 text-gray-600">Shop All Products</p>
             </div>
 
-            <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                 {data.map((item) => (
                     <div key={item.id} className="bg-gray-100 rounded">
                         <div className="relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded">
@@ -46,8 +46,10 @@ export default function PopularCategories() {
                                 alt="Front of men's Basic Tee in black."
                                 className="object-cover w-full"
                             />
-                            <div className="absolute inset-0 flex items-end justify-center p-4">
-                                <PrimaryButton>{item.title}</PrimaryButton>
+                            <div className="absolute bottom-4 inset-0 flex items-end justify-center lg:p-4">
+                                <PrimaryButton className="text-xs px-1 py-1">
+                                    {item.title}
+                                </PrimaryButton>
                             </div>
                         </div>
                     </div>

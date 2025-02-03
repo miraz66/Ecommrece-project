@@ -10,7 +10,7 @@ const ProductCard = ({ title, imageUrl, price, discount, stock, rating }) => {
     return (
         <>
             <div className="group relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded pb-2">
-                <div className="relative min-h-[308px] max-h-[308px]">
+                <div className="relative max-h-[308px]">
                     <img
                         src={imageUrl}
                         alt="Front of men's Basic Tee in black."

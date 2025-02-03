@@ -55,19 +55,17 @@ const ImageSlider = () => {
                 {properties.map((property, index) => (
                     <div
                         key={index}
-                        className="relative bg-gray-200 py-32 text-3xl min-h-[60rem] select-none"
+                        className="relative bg-gray-200 py-32 text-3xl lg:min-h-[60rem] select-none bg-cover bg-center"
                         style={{
                             backgroundImage: `url(${property.image})`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
                         }}
                     >
                         {/* Animated content */}
-                        <div className="mx-auto max-w-6xl h-[40rem] flex flex-col justify-center">
+                        <div className="px-8 lg:px-0 mx-auto max-w-6xl lg:h-[40rem] flex flex-col justify-center">
                             <div className="text-white">
                                 <h2
                                     className={clsx(
-                                        "text-6xl uppercase tracking-tight pb-3",
+                                        "lg:text-6xl uppercase tracking-tight lg:pb-3",
                                         currentSlide === index
                                             ? "translate-x-0 opacity-100"
                                             : "-translate-x-20 opacity-0",
@@ -78,7 +76,7 @@ const ImageSlider = () => {
                                 </h2>
                                 <h1
                                     className={clsx(
-                                        "text-6xl font-bold uppercase tracking-tight pb-6",
+                                        "lg:text-6xl font-bold uppercase tracking-tight pb-6",
                                         currentSlide === index
                                             ? "translate-x-0 opacity-100"
                                             : "-translate-x-40 opacity-0",
@@ -99,7 +97,7 @@ const ImageSlider = () => {
                                     <div className="bg-white w-6 h-[1px]"></div>
                                     <p
                                         className={clsx(
-                                            "text-lg",
+                                            "text-sm lg:text-lg",
                                             currentSlide === index
                                                 ? "translate-x-0 opacity-100"
                                                 : "-translate-x-40 opacity-0",
@@ -112,7 +110,7 @@ const ImageSlider = () => {
 
                                 <PrimaryButton
                                     className={clsx(
-                                        "mt-8 py-3 px-8",
+                                        "mt-8 py-1 px-2 lg:py-3 lg:px-8",
                                         currentSlide === index
                                             ? "translate-x-0 opacity-100"
                                             : "translate-y-10 opacity-0",

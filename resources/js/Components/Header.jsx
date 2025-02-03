@@ -29,12 +29,47 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
         <header className="absolute inset-x-0 top-0 z-50 max-w-8xl mx-auto">
             <nav
                 aria-label="Global"
-                className="flex items-center justify-between"
+                className="flex items-center max-lg:flex-row-reverse justify-between"
             >
+                <div className="lg:hidden flex gap-4 items-center">
+                    <div className="relative">
+                        <HeartIcon
+                            aria-hidden="true"
+                            className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
+                        />
+
+                        <span className="absolute -bottom-1 -right-1 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
+                            0
+                        </span>
+                    </div>
+
+                    <div
+                        onMouseMove={() => {
+                            setDropdownOpen("cart");
+                        }}
+                        onMouseLeave={() => {
+                            setDropdownOpen("");
+                        }}
+                        className="relative py-5"
+                    >
+                        <div className="relative">
+                            <ShoppingCartIcon
+                                aria-hidden="true"
+                                className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
+                            />
+
+                            <p className="absolute -bottom-1 -right-1 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
+                                0
+                            </p>
+                        </div>
+                        <CartDropDown item="cart" dropdownOpen={dropdownOpen} />
+                    </div>
+                </div>
+
                 <div className="flex lg:flex-1 justify-between items-center">
-                    <a href="#" className="-m-1.5 p-1.5">
+                    <a href="#" className="lg:-m-1.5 lg:p-1.5">
                         <span className="sr-only">Your Company</span>
-                        <img alt="" src={logo} className="h-8 w-auto" />
+                        <img alt="" src={logo} className="h-7 lg:h-8 w-auto" />
                     </a>
 
                     <div className="hidden lg:flex lg:gap-x-12">
@@ -96,47 +131,8 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                         ))}
                     </div>
                 </div>
+
                 <div className="flex lg:hidden">
-                    <div className="flex gap-4 items-center">
-                        <div>
-                            <div className="relative">
-                                <HeartIcon
-                                    aria-hidden="true"
-                                    className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
-                                />
-
-                                <span className="absolute -bottom-1 -right-1 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
-                                    0
-                                </span>
-                            </div>
-                        </div>
-
-                        <div
-                            onMouseMove={() => {
-                                setDropdownOpen("cart");
-                            }}
-                            onMouseLeave={() => {
-                                setDropdownOpen("");
-                            }}
-                            className="relative py-5"
-                        >
-                            <div className="relative">
-                                <ShoppingCartIcon
-                                    aria-hidden="true"
-                                    className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
-                                />
-
-                                <p className="absolute -bottom-1 -right-1 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
-                                    0
-                                </p>
-                            </div>
-                            <CartDropDown
-                                item="cart"
-                                dropdownOpen={dropdownOpen}
-                            />
-                        </div>
-                    </div>
-
                     <button
                         type="button"
                         onClick={() => setMobileMenuOpen(true)}

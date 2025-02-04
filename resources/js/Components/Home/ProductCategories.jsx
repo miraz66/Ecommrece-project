@@ -83,11 +83,14 @@ const products = [
 
 export default function ProductCategories() {
     return (
-        <div className="mx-auto max-w-2xl lg:max-w-8xl lg:px-8 py-16 lg:py-24">
+        <div className="mx-auto max-w-2xl lg:max-w-8xl px-4 lg:px-8 py-16 lg:py-24">
             {products.map((product, index) => (
-                <div key={index} className="grid grid-cols-3 gap-4">
+                <div
+                    key={index}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
                     <div className="space-y-8">
-                        <div className="pb-8">
+                        <div className="pb-8 text-center md:text-left">
                             <h1 className="text-xl font-bold uppercase tracking-wide text-gray-800">
                                 Featured Products
                             </h1>
@@ -107,8 +110,8 @@ export default function ProductCategories() {
                         ))}
                     </div>
 
-                    <div className="space-y-8">
-                        <div className="pb-8">
+                    <div className="space-y-8 pt-10 md:pt-0">
+                        <div className="pb-8 text-center">
                             <h1 className="text-xl font-bold uppercase tracking-wide text-gray-800">
                                 Featured Products
                             </h1>
@@ -128,8 +131,8 @@ export default function ProductCategories() {
                         ))}
                     </div>
 
-                    <div className="space-y-8">
-                        <div className="pb-8">
+                    <div className="space-y-8 pt-10 md:pt-0">
+                        <div className="pb-8 text-center">
                             <h1 className="text-xl font-bold uppercase tracking-wide text-gray-800">
                                 Featured Products
                             </h1>

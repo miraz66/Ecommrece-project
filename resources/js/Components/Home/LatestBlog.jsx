@@ -74,7 +74,7 @@ export default function LatestBlog() {
                 </div>
                 <div className="relative">
                     <Slide
-                        slidesToScroll={2}
+                        slidesToScroll={1}
                         slidesToShow={3}
                         prevArrow={customPrevArrow}
                         nextArrow={customNextArrow}

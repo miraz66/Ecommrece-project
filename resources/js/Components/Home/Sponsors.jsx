@@ -79,7 +79,7 @@ export default function Sponsors() {
                     {BrandLogoData.map(({ alt, logo }, index) => (
                         <img
                             key={index}
-                            className="opacity-70 max-md:h-10 max-md:w-28 mx-auto hover:opacity-100 ease-in-out duration-300 select-none"
+                            className="opacity-70 mx-auto hover:opacity-100 ease-in-out duration-300 select-none"
                             src={logo}
                             alt={alt}
                             onContextMenu={(e) => e.preventDefault()} // Disable right-click

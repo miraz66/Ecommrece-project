@@ -21,11 +21,11 @@ export default function Home() {
                 <PopularCategories />
                 <ProductGrid />
                 <NewProduct />
-                {/* <SummerDiscountBlog /> */}
-                {/* <LatestBlog /> */}
-                {/* <ProductCategories /> */}
-                {/* <ImageCarousel /> */}
-                {/* <Footer /> */}
+                <SummerDiscountBlog />
+                <LatestBlog />
+                <ProductCategories />
+                <ImageCarousel />
+                <Footer />
             </div>
         </>
     );

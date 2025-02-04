@@ -10,7 +10,7 @@ const ProductCard = ({ title, imageUrl, price, discount, stock, rating }) => {
     return (
         <>
             <div className="group relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded pb-2">
-                <div className="relative max-h-[308px]">
+                <div className="relative lg:max-h-[308px]">
                     <img
                         src={imageUrl}
                         alt="Front of men's Basic Tee in black."
@@ -70,7 +70,7 @@ const ProductCard = ({ title, imageUrl, price, discount, stock, rating }) => {
                         </div>
                     )}
                 </div>
-                <div className="pt-6 relative">
+                <div className="pt-4 lg:pt-6 relative">
                     <h3 className="text-gray-800 pb-1.5">{title}</h3>
                     <div className="flex gap-1">
                         {[1, 2, 3, 4, 5].map((item) => {
@@ -104,15 +104,15 @@ const ProductCard = ({ title, imageUrl, price, discount, stock, rating }) => {
                     <div className="absolute w-full left-0 bottom-0 transition-all transform duration-300 ease-in-out group-hover:translate-y-0 translate-y-3 group-hover:opacity-100 opacity-0">
                         <div className="flex justify-between pr-2 pt-2">
                             <div className="flex gap-1 items-end group/cart cursor-pointer duration-200 ease-in-out">
-                                <ShoppingBagIcon className="w-5 h-5 text-gray-800 group-hover/cart:text-red-500" />
-                                <p className="text-sm text-gray-800 group-hover/cart:text-red-500">
+                                <ShoppingBagIcon className="w-4 lg:w-5 h-4 lg:h-5 text-gray-800 group-hover/cart:text-red-500" />
+                                <p className="text-xs lg:text-sm text-gray-800 group-hover/cart:text-red-500">
                                     Add to Cart
                                 </p>
                             </div>
 
                             <div className="flex gap-1 items-end group/quick cursor-pointer">
-                                <MagnifyingGlassIcon className="w-5 h-5 text-gray-800 group-hover/quick:text-red-500" />
-                                <p className="text-sm text-gray-800 group-hover/quick:text-red-500">
+                                <MagnifyingGlassIcon className="w-4 lg:w-5 h-4 lg:h-5 text-gray-800 group-hover/quick:text-red-500" />
+                                <p className="text-xs lg:text-sm text-gray-800 group-hover/quick:text-red-500">
                                     Quick View
                                 </p>
                             </div>

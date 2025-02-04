@@ -7,9 +7,8 @@ import ProductCategories from "@/Components/Home/ProductCategories";
 import ProductGrid from "@/Components/Home/ProductGrid";
 import ImageCarousel from "@/Components/Home/Sponsors";
 import SummerDiscountBlog from "@/Components/Home/SummerDiscountBlog";
-import Test from "@/Components/Home/Test";
 import Opportunity from "@/Components/Opportunity";
-import { Head, Link } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 
 export default function Home() {
     return (

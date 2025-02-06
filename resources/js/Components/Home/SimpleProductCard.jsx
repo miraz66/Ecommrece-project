@@ -3,17 +3,17 @@ import { StarIcon } from "@heroicons/react/24/solid";
 const SimpleProductCard = ({ title, imageUrl, price, discount, rating }) => {
     return (
         <>
-            <div className="group/product aspect-h-1 aspect-w-1 w-full rounded">
+            <div className="group aspect-h-1 aspect-w-1 w-full rounded">
                 <div className="flex gap-6">
                     <div className="h-36 w-32">
                         <img
                             src={imageUrl}
                             alt="Front of men's Basic Tee in black."
-                            className="object-cover w-full h-full transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer"
+                            className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105 cursor-pointer"
                         />
                     </div>
                     <div>
-                        <h3 className="text-gray-600 pb-1.5 hover:text-red-600 duration-200 ease-in-out cursor-pointer">
+                        <h3 className="text-gray-600 pb-1.5 group-hover:text-red-600 duration-200 ease-in-out cursor-pointer">
                             {title}
                         </h3>
                         <div className="flex gap-1">

@@ -9,13 +9,15 @@ import { StarIcon } from "@heroicons/react/24/solid";
 const ProductCard = ({ title, imageUrl, price, discount, stock, rating }) => {
     return (
         <>
-            <div className="group relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded pb-2">
-                <div className="relative lg:max-h-[308px]">
-                    <img
-                        src={imageUrl}
-                        alt="Front of men's Basic Tee in black."
-                        className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
-                    />
+            <div className="group pb-2">
+                <div className="relative ">
+                    <div>
+                        <img
+                            src={imageUrl}
+                            alt="Front of men's Basic Tee in black."
+                            className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
+                        />
+                    </div>
 
                     {/* Wishlist or Compare */}
                     <div className="absolute right-2 top-2 bg-white p-2 space-y-1 shadow transition-all transform duration-300 ease-in-out group-hover:translate-x-0 translate-x-3 group-hover:opacity-100 opacity-0">
@@ -70,6 +72,7 @@ const ProductCard = ({ title, imageUrl, price, discount, stock, rating }) => {
                         </div>
                     )}
                 </div>
+
                 <div className="pt-4 lg:pt-6 relative">
                     <h3 className="text-gray-800 pb-1.5">{title}</h3>
                     <div className="flex gap-1">

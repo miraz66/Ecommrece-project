@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import banner from "@/assets/banner2.jpg";
 import SimpleProductCard from "@/Components/Home/SimpleProductCard";
 import ProductImage from "@/assets/products-1-min.jpg";
+import { Data } from "@/assets/ProductData";
+import ProductCard from "@/Components/Home/ProductCard";
 
 const data = [
     "data-1",
@@ -54,7 +56,6 @@ const Categories = [
         name: "Women's",
     },
 ];
-
 const products = [
     {
         id: 1,
@@ -178,9 +179,11 @@ export default function ShopLeftSidebar() {
                         </div>
                     </div>
 
-                    <div className="col-span-3 grid grid-cols-3 auto-rows-auto gap-4">
-                        {data.map((data, index) => (
-                            <div key={index}>{data}</div>
+                    <div className="col-span-3 grid grid-cols-3 auto-rows-auto gap-8">
+                        {Data.map((item) => (
+                            <div key={item.id}>
+                                <ProductCard {...item} />
+                            </div>
                         ))}
                     </div>
                 </div>

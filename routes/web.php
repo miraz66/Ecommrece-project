@@ -12,6 +12,10 @@ Route::get('/shop-left-sidebar', function () {
     return inertia('ShopLeftSidebar');
 });
 
+Route::get('/blog', function () {
+    return inertia('Blog');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

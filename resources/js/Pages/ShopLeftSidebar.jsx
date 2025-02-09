@@ -1,27 +1,12 @@
 import Header from "@/Components/Header";
 import { Head } from "@inertiajs/react";
 import React, { useState } from "react";
-import banner from "@/assets/banner2.jpg";
+import banner from "@/assets/img-sidebar.jpg";
 import SimpleProductCard from "@/Components/Home/SimpleProductCard";
 import ProductImage from "@/assets/products-1-min.jpg";
 import { Data } from "@/assets/ProductData";
 import ProductCard from "@/Components/Home/ProductCard";
-
-const data = [
-    "data-1",
-    "data-2",
-    "data-3",
-    "data-1",
-    "data-2",
-    "data-3",
-    "data-1",
-    "data-2",
-    "data-3",
-    "data-1",
-    "data-2",
-    "data-3",
-    "data-1",
-];
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const Categories = [
     {
@@ -98,7 +83,7 @@ export default function ShopLeftSidebar() {
                 </div>
 
                 <div className="max-w-8xl mx-auto grid grid-cols-4 my-14 gap-10">
-                    <div className="col-span-1">
+                    <div className="hidden lg:block col-span-1">
                         <div>
                             <div>
                                 <h2 className="text-gray-600 uppercase font-semibold text-lg tracking-wide">
@@ -158,11 +143,7 @@ export default function ShopLeftSidebar() {
                                 </button>
                             </div>
 
-                            <img
-                                src={banner}
-                                className="w-full h-96 my-14"
-                                alt=""
-                            />
+                            <img src={banner} className="w-full my-14" alt="" />
 
                             <div className="space-y-4">
                                 {products.map((item) => (
@@ -179,7 +160,20 @@ export default function ShopLeftSidebar() {
                         </div>
                     </div>
 
-                    <div className="col-span-3 grid grid-cols-3 auto-rows-auto gap-8">
+                    <div className="col-span-4 lg:hidden mx-10 border border-gray-200 flex items-center gap-2 p-1.5 px-3 rounded-lg shadow-sm bg-white">
+                        <label htmlFor="search" className="flex items-center">
+                            <MagnifyingGlassIcon className="w-6 h-6 text-gray-800" />
+                        </label>
+                        <input
+                            id="search"
+                            placeholder="Search..."
+                            type="text"
+                            name="search"
+                            className="w-full outline-none focus:outline-none border-none bg-transparent placeholder-gray-400 text-gray-700 focus:ring-0"
+                        />
+                    </div>
+
+                    <div className="col-span-4 lg:col-span-3 grid grid-cols-2 lg:grid-cols-3 auto-rows-auto gap-6 lg:gap-8 px-4 lg:px-0">
                         {Data.map((item) => (
                             <div key={item.id}>
                                 <ProductCard {...item} />

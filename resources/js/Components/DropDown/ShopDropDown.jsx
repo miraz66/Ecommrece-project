@@ -47,11 +47,11 @@ export default function ShopDropDown({ item, dropdownOpen }) {
                 {item.name === "Shop" && (
                     <div
                         className={clsx(
-                            "absolute right-0 transform -translate-x-1/3 inset-x-1/2 z-10 w-screen overflow-hidden bg-white transition-all duration-700 ease-in-out",
+                            "absolute right-0 transform -translate-x-1/3 -inset-x-3 z-10 w-screen overflow-hidden bg-white transition-all duration-700 ease-in-out",
                             dropdownOpen === item.name ? "max-h-96" : "max-h-0"
                         )}
                     >
-                        <div className="py-6 flex justify-start max-w-[1500px] mx-auto">
+                        <div className="py-6 flex justify-start max-w-8xl mx-auto">
                             <div className="grid grid-cols-5 gap-4 w-full">
                                 {DropDownValue.map((item, index) => (
                                     <div

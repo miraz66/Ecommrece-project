@@ -49,7 +49,7 @@ export default {
                 //   muted: withOpacity('--text-muted-color'),
             },
             maxWidth: {
-                "8xl": "1500px",
+                "8xl": "1400px",
             },
         },
     },

@@ -32,7 +32,7 @@ const data = [
 export default function Footer() {
     return (
         <div className="bg-secondary">
-            <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-8xl mx-auto">
                 <div className="lg:grid grid-cols-6 gap-8 py-20 space-y-10 lg:space-y-0">
                     {data.map((item) => (
                         <div key={item.title}>

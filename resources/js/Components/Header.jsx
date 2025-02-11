@@ -72,7 +72,7 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                         <img alt="" src={logo} className="h-7 lg:h-8 w-auto" />
                     </a>
 
-                    <div className="hidden lg:flex lg:gap-x-12">
+                    <div className="hidden lg:flex lg:gap-x-8">
                         {navigation.map((item) => (
                             <div
                                 key={item.name}
@@ -92,7 +92,7 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                             >
                                 <Link
                                     to={item.href}
-                                    className="text-sm font-bold text-white flex py-4 lg:py-6"
+                                    className="text-sm font-bold text-white flex py-4 lg:py-8"
                                 >
                                     {item.name}
                                     {item.down && (

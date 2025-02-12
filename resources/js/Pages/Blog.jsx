@@ -65,8 +65,8 @@ export default function Blog() {
                     setMobileMenuOpen={setMobileMenuOpen}
                 />
 
-                <div className="max-w-8xl mx-auto py-36">
-                    <h3 className="text-xl font-semibold uppercase tracking-tight text-gray-100">
+                <div className="max-w-4xl mx-auto py-36">
+                    <h3 className="text-base font-semibold uppercase tracking-tight text-gray-100">
                         Blog
                     </h3>
                     <p className="mt-2 text-white text-5xl font-bold tracking-wider">
@@ -80,10 +80,12 @@ export default function Blog() {
                 </div>
 
                 <div className="bg-white">
-                    <div className="mx-auto max-w-2xl lg:max-w-8xl py-16 lg:py-24 grid grid-cols-4 space-y-8">
-                        {data.map((item) => (
-                            <BlogMain key={item.id} {...item} />
-                        ))}
+                    <div className="mx-auto max-w-2xl lg:max-w-8xl py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-4 gap-10">
+                        <div className="col-span-3 space-y-8">
+                            {data.map((item) => (
+                                <BlogMain key={item.id} {...item} />
+                            ))}
+                        </div>
 
                         <BlogRight />
                     </div>

@@ -2,7 +2,7 @@ import { ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/react/24/outline";
 
 export default function BlogMain(props) {
     return (
-        <div className="col-span-3 grid grid-cols-2 gap-10">
+        <div className="grid grid-cols-2 gap-10">
             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded">
                 <img
                     src={props.image}

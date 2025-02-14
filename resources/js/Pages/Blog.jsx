@@ -65,23 +65,23 @@ export default function Blog() {
                     setMobileMenuOpen={setMobileMenuOpen}
                 />
 
-                <div className="max-w-4xl mx-auto py-36">
-                    <h3 className="text-base font-semibold uppercase tracking-tight text-gray-100">
+                <div className="max-w-4xl mx-4 lg:mx-auto pt-28 pb-14 lg:py-36">
+                    <h3 className="text-sm lg:text-base font-semibold uppercase tracking-tight text-gray-100">
                         Blog
                     </h3>
-                    <p className="mt-2 text-white text-5xl font-bold tracking-wider">
+                    <p className="mt-2 text-white text-3xl lg:text-5xl font-bold tracking-wider">
                         The latest articles and news
                     </p>
 
-                    <p className="mt-4 text-gray-300 tracking-wide">
+                    <p className="mt-4 text-sm lg:text-base text-gray-300 tracking-wide">
                         Stay up-to-date with the latest industry news as our
                         marketing teams finds new ways to help you grow.
                     </p>
                 </div>
 
                 <div className="bg-white">
-                    <div className="mx-auto max-w-2xl lg:max-w-8xl py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-4 gap-10">
-                        <div className="col-span-3 space-y-8">
+                    <div className="mx-4 lg:mx-auto max-w-2xl lg:max-w-8xl py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-4 gap-10">
+                        <div className="col-span-3">
                             {data.map((item) => (
                                 <BlogMain key={item.id} {...item} />
                             ))}

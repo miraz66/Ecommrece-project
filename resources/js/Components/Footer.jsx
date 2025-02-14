@@ -32,7 +32,7 @@ const data = [
 export default function Footer() {
     return (
         <div className="bg-secondary">
-            <div className="max-w-8xl mx-auto">
+            <div className="max-w-8xl mx-4 lg:mx-auto">
                 <div className="lg:grid grid-cols-6 gap-8 py-20 space-y-10 lg:space-y-0">
                     {data.map((item) => (
                         <div key={item.title}>
@@ -85,10 +85,12 @@ export default function Footer() {
                             </h3>
                             <p className="h-[1px] w-5 rounded-full bg-red-600"></p>
                         </div>
+
                         <p className="mt-4 text-sm text-neutral-500">
                             Subscribe to our newsletter and get 20% off your
                             first purchase
                         </p>
+
                         <form className="mt-4">
                             <input
                                 type="text"

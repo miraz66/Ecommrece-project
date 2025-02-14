@@ -1,4 +1,5 @@
 import blog_1 from "@/assets/blog-8-1-150x150.jpg";
+import image_sidebar from "@/assets/img-sidebar.jpg";
 
 const categories = ["Business", "Fashion", "Furniture", "Interior", "Travel"];
 const RecentPost = [
@@ -132,6 +133,14 @@ export default function BlogRight() {
                         March 2025
                     </a>
                 </div>
+            </div>
+
+            <div className="space-y-6 pt-8">
+                <img
+                    src={image_sidebar}
+                    className="w-full"
+                    alt="sidebar-image"
+                />
             </div>
         </div>
     );

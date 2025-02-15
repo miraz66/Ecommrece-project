@@ -16,6 +16,10 @@ Route::get('/blog', function () {
     return inertia('Blog');
 });
 
+Route::get('/show', function () {
+    return inertia('ShowProduct');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

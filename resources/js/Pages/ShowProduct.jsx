@@ -1,4 +1,6 @@
 import Header from "@/Components/Header";
+import Product from "@/Components/Product";
+import ProductCarousel from "@/Components/ProductCarousel";
 import { Head } from "@inertiajs/react";
 import React, { useState } from "react";
 
@@ -19,6 +21,9 @@ export default function ShowProduct() {
                     Sit voluptatem rhoncus
                 </h1>
             </div>
+
+            <Product />
+            {/* <ProductCarousel /> */}
         </div>
     );
 }

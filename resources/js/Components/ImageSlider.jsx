@@ -50,6 +50,7 @@ const ImageSlider = () => {
                 arrows={false}
                 className="w-full"
                 duration={10000}
+                autoplay={false}
                 onChange={(previous, next) => setCurrentSlide(next)}
             >
                 {properties.map((property, index) => (

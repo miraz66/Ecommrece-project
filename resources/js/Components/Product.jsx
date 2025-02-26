@@ -90,7 +90,7 @@ export default function Product() {
             </div>
 
             {/* Thumbnail Navigation */}
-            <div className="flex items-center justify-center gap-3 mt-4">
+            {/* <div className="flex items-center justify-center gap-3 mt-4">
                 {products.map((item, index) => (
                     <img
                         key={item.id}
@@ -107,7 +107,7 @@ export default function Product() {
                         }}
                     />
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 }

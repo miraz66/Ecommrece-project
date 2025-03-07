@@ -3,6 +3,7 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import product_1 from "../assets/products-1-min.jpg";
 import product_2 from "../assets/products-4-min.jpg";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 
 const products = [
     { id: 1, src: product_1, alt: "Product 1" },
@@ -15,98 +16,116 @@ const products = [
 
 export default function Product() {
     const [selectedIndex, setSelectedIndex] = useState(0);
+    const [startIndex, setStartIndex] = useState(0);
     const slideRef = useRef(null);
+    const visibleThumbnails = 4; // Show 4 thumbnails at a time
+    const [hoverPos, setHoverPos] = useState({ x: 0, y: 0 });
 
-    const prevImage = () => {
-        const newIndex =
-            selectedIndex === 0 ? products.length - 1 : selectedIndex - 1;
-        setSelectedIndex(newIndex);
-        slideRef.current.goTo(newIndex);
+    // Move the thumbnail scroll left
+    const scrollLeft = () => {
+        setStartIndex((prev) => Math.max(0, prev - 1));
     };
 
-    const nextImage = () => {
-        const newIndex =
-            selectedIndex === products.length - 1 ? 0 : selectedIndex + 1;
-        setSelectedIndex(newIndex);
-        slideRef.current.goTo(newIndex);
+    // Move the thumbnail scroll right
+    const scrollRight = () => {
+        setStartIndex((prev) =>
+            Math.min(products.length - visibleThumbnails, prev + 1)
+        );
+    };
+
+    const handleMouseMove = (e) => {
+        const { left, top, width, height } =
+            e.currentTarget.getBoundingClientRect();
+        const x = ((e.clientX - left) / width) * 100;
+        const y = ((e.clientY - top) / height) * 100;
+        setHoverPos({ x, y });
     };
 
     return (
-        <div className="w-full max-w-lg mx-auto">
+        <div className="w-full mx-auto">
             {/* Main Product Display */}
-            <div className="relative h-96 bg-gray-100 rounded-lg flex justify-center items-center overflow-hidden">
+            <div
+                className="relative bg-gray-200 text-3xl select-none bg-cover bg-center"
+                onMouseMove={handleMouseMove}
+            >
                 <Slide
                     ref={slideRef}
-                    indicators={false} // Disable default indicators
                     arrows={false}
-                    className="w-full h-full absolute top-0 left-0"
-                    duration={10000}
                     autoplay={false}
                     onChange={(previous, next) => setSelectedIndex(next)}
                 >
-                    {products.map((item) => (
-                        <img
+                    {products.map((item, index) => (
+                        <div
                             key={item.id}
-                            src={item.src}
-                            alt={item.alt}
-                            className="w-full h-full object-contain"
-                        />
+                            className="w-full h-full flex justify-center items-center"
+                        >
+                            <img
+                                src={item.src}
+                                alt={item.alt}
+                                className={`w-full h-full object-cover transition-transform duration-300 ${
+                                    selectedIndex === index ? "scale-105" : ""
+                                }`}
+                                style={{
+                                    transform: `scale(1.1) translate(${
+                                        (hoverPos.x - 50) / 10
+                                    }%, ${(hoverPos.y - 50) / 10}%)`,
+                                    transition: "transform 0.2s ease-out",
+                                }}
+                            />
+                        </div>
                     ))}
                 </Slide>
-
-                {/* Navigation Buttons */}
-                <button
-                    onClick={prevImage}
-                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md"
-                >
-                    <svg
-                        className="w-5 h-5"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                    >
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </button>
-                <button
-                    onClick={nextImage}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md"
-                >
-                    <svg
-                        className="w-5 h-5"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                    >
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </button>
             </div>
 
-            {/* Thumbnail Navigation */}
-            <div className="flex items-center justify-center gap-3 mt-4">
-                {products.map((item, index) => (
-                    <img
-                        key={item.id}
-                        src={item.src}
-                        alt={item.alt}
-                        className={`w-16 h-16 object-cover cursor-pointer transition-all ${
-                            selectedIndex === index
-                                ? "border-2 border-red-500 scale-105"
-                                : "border border-gray-300"
-                        }`}
-                        onClick={() => {
-                            setSelectedIndex(index);
-                            slideRef.current.goTo(index);
-                        }}
-                    />
-                ))}
+            {/* Thumbnails with Left & Right Navigation */}
+            <div className="flex gap-2 items-center justify-center mt-4">
+                {/* Left Button */}
+                <button
+                    className={` ${
+                        startIndex === 0 ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                    onClick={scrollLeft}
+                    disabled={startIndex === 0}
+                >
+                    <ChevronLeft size={24} className="text-gray-800" />
+                </button>
+
+                {/* Thumbnails Container with Animation */}
+                <div className="w-full overflow-hidden relative">
+                    <div
+                        className="flex gap-4 transition-transform duration-500 ease-in-out"
+                        style={{
+                            transform: `translateX(-${startIndex * 132}px)`,
+                        }} // 132px = thumbnail image width 128 + 4 gap
+                    >
+                        {products.map((item, index) => (
+                            <img
+                                key={item.id}
+                                src={item.src}
+                                alt={item.alt}
+                                className={`w-32 h-32 object-cover cursor-pointer transition-all duration-300 ${
+                                    selectedIndex === index
+                                        ? "border border-red-500"
+                                        : ""
+                                }`}
+                                onClick={() => slideRef.current.goTo(index)}
+                            />
+                        ))}
+                    </div>
+                </div>
+
+                {/* Right Button */}
+                <button
+                    className={` ${
+                        startIndex + visibleThumbnails >= products.length
+                            ? "opacity-50 cursor-not-allowed"
+                            : ""
+                    }`}
+                    onClick={scrollRight}
+                    disabled={startIndex + visibleThumbnails >= products.length}
+                >
+                    <ChevronRight size={24} className="text-gray-800" />
+                </button>
             </div>
         </div>
     );

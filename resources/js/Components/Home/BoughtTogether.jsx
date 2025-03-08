@@ -1,75 +1,82 @@
 import { useState } from "react";
 import ReviewFrom from "../ReviewFrom";
+import { FaFacebook, FaTwitter, FaPinterest } from "react-icons/fa6";
+import { MailIcon } from "lucide-react";
+
+const tabContent = {
+    Description: (
+        <>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse ultrices mauris diam, vel efficitur nisl consectetur
+                at. Nulla facilisi. Nullam eget erat ac mi ultricies ultricies.
+                Integer auctor, elit sit amet consectetur ultricies, nunc nunc
+                ultricies nunc, nec ultricies nunc nunc nec nunc. Sed et eros ac
+                nunc ultricies ultricies. Nullam eget erat ac mi ultricies
+                ultricies. Integer auctor, elit sit amet consectetur ultricies,
+                nunc nunc ultricies nunc, nec ultricies nunc nunc nec nunc. Sed
+                et eros ac nunc ultricies ultricies.
+            </p>
+            <p className="mt-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse ultrices mauris diam, vel efficitur nisl consectetur
+                at. Nulla facilisi. Nullam eget erat ac mi ultricies ultricies.
+                Integer auctor, elit sit amet consectetur ultricies, nunc nunc
+                ultricies nunc, nec ultricies nunc nunc nec nunc. Sed et eros ac
+                nunc ultricies ultricies. Nullam eget erat ac mi ultricies
+            </p>
+        </>
+    ),
+    Reviews: <ReviewFrom />,
+    "About Brands":
+        "Our brand focuses on delivering high-quality products. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "Shipping & Returns": (
+        <>
+            <p>
+                Aliquam a tortor vel ligula auctor laoreet. Nullam dignissim,
+                arcu a tristique dictum, felis diam convallis nunc, nec gravida
+                tortor erat non lectus. Fusce odio erat, dapibus sit amet
+                suscipit quis, ultricies nec lectus. Nulla a nunc posuere,
+                facilisis metus ac, pulvinar urna. Curabitur iaculis mi
+                imperdiet, pellentesque odio ac, vehicula lacus.
+            </p>
+            <p className="mt-4">
+                Aenean finibus nunc vitae lacus mollis tincidunt. In vitae
+                rhoncus felis. Fusce convallis erat eget orci placerat, vitae
+                porta odio faucibus. Mauris lorem felis, lobortis ac condimentum
+                finibus, luctus eget ligula. Sed placerat dui nulla, in
+                condimentum dui mollis pretium. Suspendisse semper turpis nec
+                tempus gravida. Aenean a erat orci. Aliquam semper diam nec
+                maximus cursus.
+            </p>
+
+            <h3 className="mt-6 text-lg font-semibold text-gray-800">
+                General Shipping Policies
+            </h3>
+
+            <p className="mt-4">
+                Pellentesque ut purus ullamcorper, porttitor lectus vitae,
+                vehicula nulla. Aenean vestibulum efficitur neque eu fermentum.
+                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+                posuere cubilia Curae; Integer placerat ultrices odio sed
+                tempus. In scelerisque mattis neque, ac porttitor magna egestas
+                eu. Nulla massa augue, placerat non egestas sit amet, faucibus
+                ac est. Curabitur id urna lacus. Ut suscipit non nisl sit amet
+                suscipit.
+            </p>
+        </>
+    ),
+};
+
+const shareTabContent = {
+    Facebook: [<FaFacebook className="text-2xl" />, "Share on Facebook"],
+    Twitter: [<FaTwitter className="text-2xl" />, "Share on Twitter"],
+    Pinterest: [<FaPinterest className="text-2xl" />, "Pin this product"],
+    Gmail: [<MailIcon className="text-2xl" />, "Mail this product"],
+};
 
 export default function BoughtTogether() {
     const [activeTab, setActiveTab] = useState("Description");
-
-    const tabContent = {
-        Description: (
-            <>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse ultrices mauris diam, vel efficitur nisl
-                    consectetur at. Nulla facilisi. Nullam eget erat ac mi
-                    ultricies ultricies. Integer auctor, elit sit amet
-                    consectetur ultricies, nunc nunc ultricies nunc, nec
-                    ultricies nunc nunc nec nunc. Sed et eros ac nunc ultricies
-                    ultricies. Nullam eget erat ac mi ultricies ultricies.
-                    Integer auctor, elit sit amet consectetur ultricies, nunc
-                    nunc ultricies nunc, nec ultricies nunc nunc nec nunc. Sed
-                    et eros ac nunc ultricies ultricies.
-                </p>
-                <p className="mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse ultrices mauris diam, vel efficitur nisl
-                    consectetur at. Nulla facilisi. Nullam eget erat ac mi
-                    ultricies ultricies. Integer auctor, elit sit amet
-                    consectetur ultricies, nunc nunc ultricies nunc, nec
-                    ultricies nunc nunc nec nunc. Sed et eros ac nunc ultricies
-                    ultricies. Nullam eget erat ac mi ultricies
-                </p>
-            </>
-        ),
-        Reviews: <ReviewFrom />,
-        "About Brands":
-            "Our brand focuses on delivering high-quality products. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "Shipping & Returns": (
-            <>
-                <p>
-                    Aliquam a tortor vel ligula auctor laoreet. Nullam
-                    dignissim, arcu a tristique dictum, felis diam convallis
-                    nunc, nec gravida tortor erat non lectus. Fusce odio erat,
-                    dapibus sit amet suscipit quis, ultricies nec lectus. Nulla
-                    a nunc posuere, facilisis metus ac, pulvinar urna. Curabitur
-                    iaculis mi imperdiet, pellentesque odio ac, vehicula lacus.
-                </p>
-                <p className="mt-4">
-                    Aenean finibus nunc vitae lacus mollis tincidunt. In vitae
-                    rhoncus felis. Fusce convallis erat eget orci placerat,
-                    vitae porta odio faucibus. Mauris lorem felis, lobortis ac
-                    condimentum finibus, luctus eget ligula. Sed placerat dui
-                    nulla, in condimentum dui mollis pretium. Suspendisse semper
-                    turpis nec tempus gravida. Aenean a erat orci. Aliquam
-                    semper diam nec maximus cursus.
-                </p>
-
-                <h3 className="mt-6 text-lg font-semibold text-gray-800">
-                    General Shipping Policies
-                </h3>
-
-                <p className="mt-4">
-                    Pellentesque ut purus ullamcorper, porttitor lectus vitae,
-                    vehicula nulla. Aenean vestibulum efficitur neque eu
-                    fermentum. Vestibulum ante ipsum primis in faucibus orci
-                    luctus et ultrices posuere cubilia Curae; Integer placerat
-                    ultrices odio sed tempus. In scelerisque mattis neque, ac
-                    porttitor magna egestas eu. Nulla massa augue, placerat non
-                    egestas sit amet, faucibus ac est. Curabitur id urna lacus.
-                    Ut suscipit non nisl sit amet suscipit.
-                </p>
-            </>
-        ),
-    };
 
     return (
         <div className="bg-white">
@@ -141,6 +148,18 @@ export default function BoughtTogether() {
                     <div className="mt-6 text-gray-700 text-sm">
                         {tabContent[activeTab]}
                     </div>
+                </div>
+
+                <div className="grid grid-cols-4 mt-16 border">
+                    {Object.keys(shareTabContent).map((tab) => (
+                        <div
+                            key={tab}
+                            className="border-l last:border-l-0 p-4 flex gap-4 items-center hover:bg-gray-100 cursor-pointer"
+                        >
+                            {shareTabContent[tab][0]}
+                            <span>{shareTabContent[tab][1]}</span>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

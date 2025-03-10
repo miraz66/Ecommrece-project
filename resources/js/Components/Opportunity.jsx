@@ -2,6 +2,8 @@ import FreeShippingLogo from "@/assets/freeshipping.png";
 import ManyBackLogo from "@/assets/money-back.png";
 import SafePaymentLogo from "@/assets/safe-payment.png";
 import LoyaltyCustomerLogo from "@/assets/loyalty-customer.png";
+import { motion } from "framer-motion";
+import { animations } from "@/utils/animationUtils";
 
 const data = [
     {
@@ -33,13 +35,18 @@ const data = [
 export default function Opportunity() {
     return (
         <>
-            <div className="mx-auto max-w-2xl lg:max-w-8xl lg:px-8">
+            <motion.div
+                initial="hidden"
+                animate="show"
+                variants={animations.fadeInUp}
+                viewport={{ once: true, amount: 0.2 }} // Trigger when 20% visible
+                exit="hidden"
+                whileInView="visible"
+                className="mx-auto max-w-2xl lg:max-w-8xl lg:px-8"
+            >
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-10 py-16 px-4 sm:py-24 sm:px-6">
                     {data.map((item) => (
-                        <div
-                            key={item.title}
-                            className="mt-4 lg:mt-12 w-full h-full"
-                        >
+                        <div key={item.title} className="mt-4 w-full h-full">
                             <div className="group relative">
                                 <div className="flex justify-center items-center">
                                     <img
@@ -67,7 +74,7 @@ export default function Opportunity() {
                     ))}
                 </div>
                 <hr />
-            </div>
+            </motion.div>
         </>
     );
 }

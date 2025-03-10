@@ -4,12 +4,23 @@ import banner2 from "@/assets/img2-middle-store1.jpg";
 import banner3 from "@/assets/banner1.jpg";
 import banner4 from "@/assets/banner2.jpg";
 import PrimaryButton from "../PrimaryButton";
+import { animations } from "@/utils/animationUtils";
+import { motion } from "framer-motion";
 
 const ProductGrid = () => {
     return (
         <div className="flex flex-col md:flex-row">
             {/* Left Section */}
-            <div
+            <motion.div
+                initial="hidden"
+                animate="show"
+                variants={animations.fadeInLeft}
+                transition={{ duration: 0.6 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                viewport={{ once: true, amount: 0.2 }} // Trigger when 20% visible
+                exit="hidden"
+                whileInView="visible"
                 className="flex-1 basis-1/2 lg:min-h-[50rem] bg-cover bg-center"
                 style={{
                     backgroundImage: `url(${banner1})`,
@@ -28,11 +39,20 @@ const ProductGrid = () => {
                         </PrimaryButton>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
             {/* Right Section */}
             <div className="flex flex-col flex-1 basis-1/2">
-                <div
+                <motion.div
+                    initial="hidden"
+                    animate="show"
+                    variants={animations.fadeInRight}
+                    transition={{ duration: 0.6 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    viewport={{ once: true, amount: 0.2 }} // Trigger when 20% visible
+                    exit="hidden"
+                    whileInView="visible"
                     className="flex-1 basis-1/2 lg:min-h-[25rem] object-cover bg-cover bg-center"
                     style={{
                         backgroundImage: `url(${banner2})`,
@@ -49,10 +69,45 @@ const ProductGrid = () => {
                             Discover Now
                         </button>
                     </div>
-                </div>
+                </motion.div>
+
                 <div className="flex justify-between lg:min-h-[25rem]">
-                    <img src={banner4} className="w-1/2" alt="Banner image" />
-                    <img src={banner3} className="w-1/2" alt="Banner image" />
+                    <motion.div
+                        initial="hidden"
+                        animate="show"
+                        variants={animations.fadeInRight}
+                        transition={{ duration: 0.6 }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        viewport={{ once: true, amount: 0.2 }} // Trigger when 20% visible
+                        exit="hidden"
+                        whileInView="visible"
+                        className="w-1/2"
+                    >
+                        <img
+                            src={banner4}
+                            className="w-full"
+                            alt="Banner image"
+                        />
+                    </motion.div>
+                    <motion.div
+                        initial="hidden"
+                        animate="show"
+                        variants={animations.fadeInRight}
+                        transition={{ duration: 0.6 }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        viewport={{ once: true, amount: 0.2 }} // Trigger when 20% visible
+                        exit="hidden"
+                        whileInView="visible"
+                        className="w-1/2"
+                    >
+                        <img
+                            src={banner3}
+                            className="w-full"
+                            alt="Banner image"
+                        />
+                    </motion.div>
                 </div>
             </div>
         </div>

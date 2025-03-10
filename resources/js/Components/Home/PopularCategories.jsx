@@ -3,6 +3,8 @@ import CategoriesImage2 from "@/assets/categories-2.jpg";
 import CategoriesImage3 from "@/assets/categories-3.jpg";
 import CategoriesImage4 from "@/assets/categories-4.jpg";
 import PrimaryButton from "../PrimaryButton";
+import { motion } from "framer-motion";
+import { animations } from "@/utils/animationUtils";
 
 const data = [
     {
@@ -29,7 +31,15 @@ const data = [
 
 export default function PopularCategories() {
     return (
-        <div className="mx-auto max-w-2xl lg:max-w-8xl lg:px-8 py-16 lg:py-24">
+        <motion.div
+            initial="hidden"
+            animate="show"
+            variants={animations.fadeInUp}
+            viewport={{ once: true, amount: 0.2 }} // Trigger when 20% visible
+            exit="hidden"
+            whileInView="visible"
+            className="mx-auto max-w-2xl lg:max-w-8xl lg:px-8 py-16 lg:py-24"
+        >
             <div className="text-center">
                 <h1 className="text-3xl font-bold uppercase tracking-tight text-gray-800">
                     Popular Categories
@@ -55,6 +65,6 @@ export default function PopularCategories() {
                     </div>
                 ))}
             </div>
-        </div>
+        </motion.div>
     );
 }

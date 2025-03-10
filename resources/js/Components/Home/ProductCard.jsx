@@ -5,17 +5,29 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { StarIcon } from "@heroicons/react/24/solid";
+import { motion } from "framer-motion";
+import { animations } from "@/utils/animationUtils";
 
 const ProductCard = ({ title, imageUrl, price, discount, stock, rating }) => {
     return (
         <>
-            <div className="group pb-2">
+            <motion.div
+                initial="hidden"
+                animate="show"
+                variants={animations.fadeInUp}
+                viewport={{ once: true, amount: 0.2 }} // Trigger when 20% visible
+                exit="hidden"
+                whileInView="visible"
+                className="group pb-2"
+            >
                 <div className="relative ">
                     <div>
-                        <img
+                        <motion.img
+                            whileHover={{ scale: 1.07 }}
+                            whileTap={{ scale: 0.8 }}
                             src={imageUrl}
                             alt="Front of men's Basic Tee in black."
-                            className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
+                            className="object-cover w-full h-full"
                         />
                     </div>
 
@@ -122,7 +134,7 @@ const ProductCard = ({ title, imageUrl, price, discount, stock, rating }) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </>
     );
 };

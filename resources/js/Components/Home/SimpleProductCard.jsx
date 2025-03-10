@@ -1,9 +1,19 @@
 import { StarIcon } from "@heroicons/react/24/solid";
+import { motion } from "framer-motion";
+import { animations } from "@/utils/animationUtils";
 
 const SimpleProductCard = ({ title, imageUrl, price, discount, rating }) => {
     return (
         <>
-            <div className="group aspect-h-1 aspect-w-1 w-full rounded">
+            <motion.div
+                initial="hidden"
+                animate="show"
+                variants={animations.fadeInUp}
+                viewport={{ once: true, amount: 0.2 }} // Trigger when 20% visible
+                exit="hidden"
+                whileInView="visible"
+                className="group aspect-h-1 aspect-w-1 w-full rounded"
+            >
                 <div className="flex gap-6">
                     <div className="h-36 w-32">
                         <img
@@ -46,7 +56,7 @@ const SimpleProductCard = ({ title, imageUrl, price, discount, rating }) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </>
     );
 };

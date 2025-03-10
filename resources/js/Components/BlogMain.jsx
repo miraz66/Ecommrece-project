@@ -1,8 +1,28 @@
 import { ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/react/24/outline";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function BlogMain(props) {
+    const ref = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["0 1", "1.33 1"], // Triggers animation when the section is in view
+    });
+
+    const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+    const opacityProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
     return (
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 py-8 first:pt-0 lg:border-b last:border-b-0">
+        <motion.div
+            ref={ref}
+            transition={{ duration: 0.5 }}
+            style={{
+                scale: scaleProgress,
+                opacity: opacityProgress,
+            }}
+            className="grid lg:grid-cols-2 gap-8 lg:gap-10 py-8 first:pt-0 lg:border-b last:border-b-0"
+        >
             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded">
                 <img
                     src={props.image}
@@ -36,6 +56,6 @@ export default function BlogMain(props) {
                     <p className="text-xs text-red-600">{props.date}</p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }

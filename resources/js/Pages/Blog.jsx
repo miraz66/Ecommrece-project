@@ -2,7 +2,8 @@ import BlogMain from "@/Components/BlogMain";
 import Header from "@/Components/Header";
 import BlogRight from "@/Components/Home/BlogRight";
 import { Head } from "@inertiajs/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 import blog_1 from "@/assets/blog-3-3.jpg";
 import blog_2 from "@/assets/blog-7-1.jpg";
@@ -55,6 +56,16 @@ const data = [
 export default function Blog() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+    const ref = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["0 1", "1.33 1"], // Triggers animation when the section is in view
+    });
+
+    const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+    const opacityProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
     return (
         <>
             <Head title="Blog" />
@@ -83,7 +94,9 @@ export default function Blog() {
                     <div className="mx-4 lg:mx-auto max-w-2xl lg:max-w-8xl py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-4 gap-10">
                         <div className="col-span-3">
                             {data.map((item) => (
-                                <BlogMain key={item.id} {...item} />
+                                <motion.div>
+                                    <BlogMain {...item} />
+                                </motion.div>
                             ))}
                         </div>
 

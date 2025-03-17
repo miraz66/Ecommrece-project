@@ -2,7 +2,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ImageModal = ({ selectedImage, imagePosition, onClose }) => {
-    if (!selectedImage) return null;
+    if (!selectedImage || !imagePosition) return null;
 
     return (
         <AnimatePresence>
@@ -17,10 +17,10 @@ const ImageModal = ({ selectedImage, imagePosition, onClose }) => {
                     src={selectedImage}
                     alt="Selected"
                     initial={{
-                        x: imagePosition?.x,
-                        y: imagePosition?.y,
-                        width: imagePosition?.width,
-                        height: imagePosition?.height,
+                        x: imagePosition.x - window.innerWidth / 2,
+                        y: imagePosition.y - window.innerHeight / 2,
+                        width: imagePosition.width,
+                        height: imagePosition.height,
                     }}
                     animate={{
                         x: 0,
@@ -29,13 +29,13 @@ const ImageModal = ({ selectedImage, imagePosition, onClose }) => {
                         height: "auto",
                     }}
                     exit={{
-                        x: imagePosition?.x,
-                        y: imagePosition?.y,
-                        width: imagePosition?.width,
-                        height: imagePosition?.height,
+                        x: imagePosition.x - window.innerWidth / 2,
+                        y: imagePosition.y - window.innerHeight / 2,
+                        width: imagePosition.width,
+                        height: imagePosition.height,
                     }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="rounded-lg shadow-xl cursor-pointer"
+                    className="rounded-3xl shadow-xl cursor-pointer"
                 />
             </motion.div>
         </AnimatePresence>

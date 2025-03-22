@@ -11,8 +11,6 @@ const DropDownValue = [
 ];
 
 export default function CartDropDown({ dropdownOpen }) {
-    console.log(dropdownOpen);
-
     return (
         <>
             <div

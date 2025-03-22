@@ -62,6 +62,7 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                                 0
                             </p>
                         </div>
+
                         <CartDropDown item="cart" dropdownOpen={dropdownOpen} />
                     </div>
                 </div>

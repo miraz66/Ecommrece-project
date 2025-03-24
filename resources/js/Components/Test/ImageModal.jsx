@@ -1,8 +1,9 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import clsx from "clsx";
 
-const ImageModal = ({ selectedImage, imagePosition, onClose }) => {
-    if (!selectedImage || !imagePosition) return null;
+const ImageModal = ({ data, imagePosition, textColors, onClose }) => {
+    if (!data || !imagePosition) return null;
 
     return (
         <AnimatePresence>
@@ -13,9 +14,7 @@ const ImageModal = ({ selectedImage, imagePosition, onClose }) => {
                 exit={{ opacity: 0 }}
                 onClick={onClose}
             >
-                <motion.img
-                    src={selectedImage}
-                    alt="Selected"
+                <motion.div
                     initial={{
                         x: imagePosition.x - window.innerWidth / 2,
                         y: imagePosition.y - window.innerHeight / 2,
@@ -36,7 +35,53 @@ const ImageModal = ({ selectedImage, imagePosition, onClose }) => {
                     }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                     className="rounded-3xl shadow-xl cursor-pointer"
-                />
+                >
+                    <div className="relative w-full h-full">
+                        <button
+                            className="absolute top-0 right-0 p-4 text-white"
+                            onClick={onClose}
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>
+                        </button>
+                        <img
+                            src={data.src}
+                            alt={data.title}
+                            className="w-full h-full object-cover rounded-3xl"
+                        />
+
+                        <div className="absolute top-0 p-4">
+                            <h3
+                                className={clsx(
+                                    textColors[data.src],
+                                    "text-xl font-semibold p-2 rounded"
+                                )}
+                            >
+                                {data.title}
+                            </h3>
+                            <p
+                                className={clsx(
+                                    textColors[data.src],
+                                    "text-sm font-semibold p-2 rounded"
+                                )}
+                            >
+                                {data.description}
+                            </p>
+                        </div>
+                    </div>
+                </motion.div>
             </motion.div>
         </AnimatePresence>
     );

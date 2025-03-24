@@ -2,48 +2,64 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import ImageModal from "./ImageModal";
 
-const images = [
-    "https://images.unsplash.com/photo-1741482529153-a98d81235d06?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1726137569758-fb5f8d47ae4c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1736611717961-909a6653e6ae?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1729771222046-c05d55ada736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1741482529153-a98d81235d06?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1741482529153-a98d81235d06?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1741482529153-a98d81235d06?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1741482529153-a98d81235d06?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1741482529153-a98d81235d06?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1741482529153-a98d81235d06?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+const data = [
+    {
+        id: 1,
+        title: "Sun Printing Academy",
+        description:
+            "Sun Printing Academy is a printing company that provides high quality printing services.",
+        src: "https://images.unsplash.com/photo-1741482529153-a98d81235d06?q=80&w=1080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        id: 2,
+        title: "Sun Printing Academy",
+        description:
+            "Sun Printing Academy is a printing company that provides high quality printing services.",
+        src: "https://images.unsplash.com/photo-1726137569758-fb5f8d47ae4c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        id: 3,
+        title: "Sun Printing Academy",
+        description:
+            "Sun Printing Academy is a printing company that provides high quality printing services.",
+        src: "https://images.unsplash.com/photo-1736611717961-909a6653e6ae?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        id: 4,
+        title: "Sun Printing Academy",
+        description:
+            "Sun Printing Academy is a printing company that provides high quality printing services.",
+        src: "https://images.unsplash.com/photo-1729771222046-c05d55ada736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
 ];
 
 const ImageGrid = () => {
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [selected, setSelected] = useState(null);
     const [imagePosition, setImagePosition] = useState(null);
-    const [textColors, setTextColors] = useState({}); // Store text colors for each image
+    const [textColors, setTextColors] = useState({});
 
-    const handleImageClick = (src, event) => {
+    const handleImageClick = (imageId, event) => {
         const rect = event.target.getBoundingClientRect();
+
+        const selectedImage = data.find(({ id }) => id === imageId);
+        if (!selectedImage) return;
+
         setImagePosition({
-            x: rect.left + rect.width / 2, // Center x
-            y: rect.top + rect.height / 2, // Center y
+            x: rect.left + rect.width / 2,
+            y: rect.top + rect.height / 2,
             width: rect.width,
             height: rect.height,
         });
-        setSelectedImage(src);
+
+        setSelected(selectedImage);
     };
 
     const handleCloseModal = () => {
-        const rect = document.body.getBoundingClientRect();
-        setImagePosition({
-            x: rect.left + rect.width / 2, // Center x
-            y: rect.top + rect.height / 2, // Center y
-            width: rect.width,
-            height: rect.height,
-        });
-        setSelectedImage(null);
+        setSelected(null);
     };
 
     useEffect(() => {
-        images.forEach((src) => {
+        data.forEach(({ src }) => {
             const img = new Image();
             img.crossOrigin = "Anonymous";
             img.src = src;
@@ -55,7 +71,6 @@ const ImageGrid = () => {
                 canvas.height = img.height;
                 ctx.drawImage(img, 0, 0, img.width, img.height);
 
-                // Get pixel data
                 const imageData = ctx.getImageData(
                     0,
                     0,
@@ -88,46 +103,45 @@ const ImageGrid = () => {
                 Image Gallery
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-                {images.map((src, index) => (
+                {data.map((image, index) => (
                     <div
-                        key={index}
-                        onClick={(event) => handleImageClick(src, event)}
+                        key={image.id}
+                        onClick={(event) => handleImageClick(image.id, event)}
                         className={clsx(
-                            "overflow-hidden rounded-3xl",
-                            // Assign a repeating pattern for grid spans
-                            index % 4 === 0 && "col-span-3",
-                            index % 4 === 1 && "col-span-2",
-                            index % 4 === 2 && "col-span-2",
-                            index % 4 === 3 && "col-span-3"
+                            "overflow-hidden rounded-3xl cursor-pointer",
+                            (index % 6 === 0 || index % 6 === 3) &&
+                                "col-span-3",
+                            (index % 6 === 1 || index % 6 === 2) && "col-span-2"
                         )}
                     >
-                        {selectedImage === src ? null : (
-                            <div
-                                className="h-[26rem] w-full bg-cover bg-center"
-                                style={{ backgroundImage: `url(${src})` }}
+                        <div
+                            className="h-[26rem] w-full bg-cover bg-center flex items-end p-4"
+                            style={{
+                                backgroundImage: `url(${image.src})`,
+                            }}
+                        >
+                            <h3
+                                className={clsx(
+                                    textColors[image.src],
+                                    "text-xl font-semibold p-2 rounded"
+                                )}
                             >
-                                <div className="p-4">
-                                    <h3
-                                        className={clsx(
-                                            textColors[src],
-                                            "text-xl font-semibold"
-                                        )}
-                                    >
-                                        Sun Printing company
-                                    </h3>
-                                </div>
-                            </div>
-                        )}
+                                {image.title}
+                            </h3>
+                        </div>
                     </div>
                 ))}
             </div>
 
             {/* Image Modal */}
-            <ImageModal
-                selectedImage={selectedImage}
-                imagePosition={imagePosition}
-                onClose={handleCloseModal}
-            />
+            {selected && (
+                <ImageModal
+                    data={selected}
+                    textColors={textColors}
+                    imagePosition={imagePosition}
+                    onClose={handleCloseModal}
+                />
+            )}
         </div>
     );
 };

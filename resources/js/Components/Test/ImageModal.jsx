@@ -1,9 +1,13 @@
-import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
 
 const ImageModal = ({ data, imagePosition, textColors, onClose }) => {
     if (!data || !imagePosition) return null;
+
+    const handleCloseAnimation = (event) => {
+        if (event.target !== event.currentTarget) return;
+        onClose();
+    };
 
     return (
         <AnimatePresence>
@@ -12,7 +16,7 @@ const ImageModal = ({ data, imagePosition, textColors, onClose }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                onClick={onClose}
+                onClick={handleCloseAnimation}
             >
                 <motion.div
                     initial={{
@@ -34,28 +38,9 @@ const ImageModal = ({ data, imagePosition, textColors, onClose }) => {
                         height: imagePosition.height,
                     }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="rounded-3xl shadow-xl cursor-pointer"
+                    className="rounded-3xl shadow-xl"
                 >
                     <div className="relative w-full h-full">
-                        <button
-                            className="absolute top-0 right-0 p-4 text-white"
-                            onClick={onClose}
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-6 w-6"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            </svg>
-                        </button>
                         <img
                             src={data.src}
                             alt={data.title}
@@ -66,7 +51,7 @@ const ImageModal = ({ data, imagePosition, textColors, onClose }) => {
                             <h3
                                 className={clsx(
                                     textColors[data.src],
-                                    "text-xl font-semibold p-2 rounded"
+                                    "text-xl font-semibold p-2 rounded-xl"
                                 )}
                             >
                                 {data.title}
@@ -79,6 +64,26 @@ const ImageModal = ({ data, imagePosition, textColors, onClose }) => {
                             >
                                 {data.description}
                             </p>
+                        </div>
+
+                        <div className="absolute bottom-0 right-0 p-4">
+                            <button
+                                className={clsx(
+                                    "text-sm font-semibold p-2 rounded",
+                                    textColors[data.src]
+                                )}
+                            >
+                                Live Demo
+                            </button>
+
+                            <button
+                                className={clsx(
+                                    "text-sm font-semibold p-2 rounded ml-2",
+                                    textColors[data.src]
+                                )}
+                            >
+                                Source Code
+                            </button>
                         </div>
                     </div>
                 </motion.div>

@@ -1,6 +1,8 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import ImageModal from "./ImageModal";
+import { motion } from "framer-motion";
+import MultiCarousel from "./ImageCarousel";
 
 const data = [
     {
@@ -26,6 +28,62 @@ const data = [
     },
     {
         id: 4,
+        title: "Sun Printing Academy",
+        description:
+            "Sun Printing Academy is a printing company that provides high quality printing services.",
+        src: "https://images.unsplash.com/photo-1729771222046-c05d55ada736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        id: 5,
+        title: "Sun Printing Academy",
+        description:
+            "Sun Printing Academy is a printing company that provides high quality printing services.",
+        src: "https://images.unsplash.com/photo-1729771222046-c05d55ada736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        id: 6,
+        title: "Sun Printing Academy",
+        description:
+            "Sun Printing Academy is a printing company that provides high quality printing services.",
+        src: "https://images.unsplash.com/photo-1729771222046-c05d55ada736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        id: 7,
+        title: "Sun Printing Academy",
+        description:
+            "Sun Printing Academy is a printing company that provides high quality printing services.",
+        src: "https://images.unsplash.com/photo-1729771222046-c05d55ada736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        id: 8,
+        title: "Sun Printing Academy",
+        description:
+            "Sun Printing Academy is a printing company that provides high quality printing services.",
+        src: "https://images.unsplash.com/photo-1729771222046-c05d55ada736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        id: 9,
+        title: "Sun Printing Academy",
+        description:
+            "Sun Printing Academy is a printing company that provides high quality printing services.",
+        src: "https://images.unsplash.com/photo-1729771222046-c05d55ada736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        id: 10,
+        title: "Sun Printing Academy",
+        description:
+            "Sun Printing Academy is a printing company that provides high quality printing services.",
+        src: "https://images.unsplash.com/photo-1729771222046-c05d55ada736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        id: 11,
+        title: "Sun Printing Academy",
+        description:
+            "Sun Printing Academy is a printing company that provides high quality printing services.",
+        src: "https://images.unsplash.com/photo-1729771222046-c05d55ada736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        id: 12,
         title: "Sun Printing Academy",
         description:
             "Sun Printing Academy is a printing company that provides high quality printing services.",
@@ -103,37 +161,80 @@ const ImageGrid = () => {
                 Image Gallery
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-                {data.map((image, index) => (
+                {data.slice(0, 4).map((data, index) => (
                     <div
-                        key={image.id}
-                        onClick={(event) => handleImageClick(image.id, event)}
+                        key={index}
+                        onClick={(event) => handleImageClick(data.id, event)}
                         className={clsx(
-                            "overflow-hidden rounded-3xl cursor-pointer",
-                            (index % 6 === 0 || index % 6 === 3) &&
-                                "col-span-3",
-                            (index % 6 === 1 || index % 6 === 2) && "col-span-2"
+                            "overflow-hidden rounded-3xl",
+                            // Assign a repeating pattern for grid spans
+                            index % 4 === 0 && "col-span-3",
+                            index % 4 === 1 && "col-span-2",
+                            index % 4 === 2 && "col-span-2",
+                            index % 4 === 3 && "col-span-3"
                         )}
                     >
-                        <div
-                            className="h-[26rem] w-full bg-cover bg-center flex items-end p-4"
-                            style={{
-                                backgroundImage: `url(${image.src})`,
-                            }}
-                        >
-                            <h3
-                                className={clsx(
-                                    textColors[image.src],
-                                    "text-xl font-semibold p-2 rounded"
-                                )}
+                        {selected?.id === data.id ? null : (
+                            <div
+                                className="h-[26rem] w-full bg-cover bg-center cursor-pointer"
+                                style={{
+                                    backgroundImage: `url(${data.src})`,
+                                }}
                             >
-                                {image.title}
-                            </h3>
-                        </div>
+                                <div className="p-4">
+                                    <h3
+                                        className={clsx(
+                                            textColors[data.src],
+                                            "text-xl font-semibold"
+                                        )}
+                                    >
+                                        Sun Printing company
+                                    </h3>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>
 
-            {/* Image Modal */}
+            <div className="mt-4">
+                <MultiCarousel data={data.slice(4)}>
+                    {data.map((item, i) => (
+                        <motion.div
+                            key={i}
+                            className="w-72 flex-shrink-0"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <div
+                                onClick={(event) =>
+                                    handleImageClick(item.id, event)
+                                }
+                                className="h-72 relative w-65 bg-cover bg-center"
+                            >
+                                <img
+                                    src={item.src}
+                                    alt={`Image ${i}`}
+                                    className="w-full h-full object-cover rounded-xl"
+                                />
+
+                                <div className="p-4 absolute bottom-0 bg-gradient-to-t from-black/50 to-transparent">
+                                    <h3
+                                        className={clsx(
+                                            textColors[item.src],
+                                            "text-xl font-semibold text-white"
+                                        )}
+                                    >
+                                        {item.title}
+                                    </h3>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </MultiCarousel>
+            </div>
+
             {selected && (
                 <ImageModal
                     data={selected}

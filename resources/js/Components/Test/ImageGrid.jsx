@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ImageModal from "./ImageModal";
 import { motion } from "framer-motion";
 import MultiCarousel from "./ImageCarousel";
+import { AnimatePresence } from "framer-motion";
 
 const data = [
     {

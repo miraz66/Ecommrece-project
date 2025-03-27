@@ -15,7 +15,10 @@ const ImageModal = ({ data, imagePosition, textColors, onClose }) => {
                 className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                exit={{
+                    opacity: 0,
+                    transition: { duration: 0.5, ease: "easeInOut" },
+                }}
                 onClick={handleCloseAnimation}
             >
                 <motion.div
@@ -37,6 +40,7 @@ const ImageModal = ({ data, imagePosition, textColors, onClose }) => {
                         width: imagePosition.width,
                         height: imagePosition.height,
                     }}
+                    onClick={(e) => e.stopPropagation()}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                     className="rounded-3xl shadow-xl"
                 >

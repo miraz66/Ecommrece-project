@@ -18,6 +18,7 @@ const BrandLogoData = [
     { logo: BrandLogo_1, alt: "Company Branding Logo" },
     { logo: BrandLogo_1, alt: "Company Branding Logo" },
 ];
+
 export default function Sponsors() {
     return (
         <div className="bg-primary py-14">

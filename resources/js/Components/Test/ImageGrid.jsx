@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import ImageModal from "./ImageModal";
 import { motion } from "framer-motion";
 import MultiCarousel from "./ImageCarousel";
-import { AnimatePresence } from "framer-motion";
 
 const data = [
     {
@@ -161,6 +160,7 @@ const ImageGrid = () => {
             <h2 className="text-2xl font-bold mb-4 text-center">
                 Image Gallery
             </h2>
+
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                 {data.slice(0, 4).map((data, index) => (
                     <div

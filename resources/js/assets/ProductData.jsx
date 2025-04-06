@@ -6,7 +6,7 @@ export const Data = [
     {
         id: 1,
         title: "Digital Cameras",
-        imageUrl: ProductImage,
+        image: ProductImage,
         price: 100,
         discount: 20,
         rating: 1,
@@ -15,7 +15,7 @@ export const Data = [
     {
         id: 2,
         title: "Headphones",
-        imageUrl: ProductImage2,
+        image: ProductImage2,
         price: 50,
         discount: 10,
         rating: 4,
@@ -24,7 +24,7 @@ export const Data = [
     {
         id: 3,
         title: "Smart Watches",
-        imageUrl: ProductImage3,
+        image: ProductImage3,
         price: 200,
         rating: 4,
         stock: 10,
@@ -32,7 +32,7 @@ export const Data = [
     {
         id: 4,
         title: "Portable Audio",
-        imageUrl: ProductImage,
+        image: ProductImage,
         price: 150,
         rating: 5,
         stock: 0,
@@ -40,7 +40,7 @@ export const Data = [
     {
         id: 5,
         title: "Portable Audio",
-        imageUrl: ProductImage3,
+        image: ProductImage3,
         price: 150,
         rating: 1,
         stock: 10,
@@ -48,7 +48,7 @@ export const Data = [
     {
         id: 6,
         title: "Portable Audio",
-        imageUrl: ProductImage2,
+        image: ProductImage2,
         price: 150,
         discount: 20,
         rating: 4,
@@ -57,7 +57,7 @@ export const Data = [
     {
         id: 7,
         title: "Portable Audio",
-        imageUrl: ProductImage,
+        image: ProductImage,
         price: 150,
         rating: 2,
         stock: 10,
@@ -65,7 +65,7 @@ export const Data = [
     {
         id: 8,
         title: "Portable Audio",
-        imageUrl: ProductImage2,
+        image: ProductImage2,
         price: 150,
         rating: 4,
         stock: 10,
@@ -73,7 +73,7 @@ export const Data = [
     {
         id: 9,
         title: "Portable Audio",
-        imageUrl: ProductImage3,
+        image: ProductImage3,
         price: 150,
         rating: 4,
         stock: 10,
@@ -81,7 +81,7 @@ export const Data = [
     {
         id: 10,
         title: "Portable Audio",
-        imageUrl: ProductImage2,
+        image: ProductImage2,
         price: 150,
         rating: 3,
         stock: 10,
@@ -89,7 +89,7 @@ export const Data = [
     {
         id: 11,
         title: "Digital Cameras",
-        imageUrl: ProductImage,
+        image: ProductImage,
         price: 100,
         discount: 20,
         rating: 1,
@@ -98,7 +98,7 @@ export const Data = [
     {
         id: 12,
         title: "Headphones",
-        imageUrl: ProductImage2,
+        image: ProductImage2,
         price: 50,
         discount: 10,
         rating: 4,
@@ -107,7 +107,7 @@ export const Data = [
     {
         id: 13,
         title: "Smart Watches",
-        imageUrl: ProductImage,
+        image: ProductImage,
         price: 200,
         rating: 4,
         stock: 10,
@@ -115,7 +115,7 @@ export const Data = [
     {
         id: 14,
         title: "Portable Audio",
-        imageUrl: ProductImage3,
+        image: ProductImage3,
         price: 150,
         rating: 5,
         stock: 0,
@@ -123,7 +123,7 @@ export const Data = [
     {
         id: 15,
         title: "Portable Audio",
-        imageUrl: ProductImage2,
+        image: ProductImage2,
         price: 150,
         rating: 1,
         stock: 10,
@@ -131,7 +131,7 @@ export const Data = [
     {
         id: 16,
         title: "Portable Audio",
-        imageUrl: ProductImage,
+        image: ProductImage,
         price: 150,
         discount: 20,
         rating: 4,
@@ -140,7 +140,7 @@ export const Data = [
     {
         id: 17,
         title: "Portable Audio",
-        imageUrl: ProductImage3,
+        image: ProductImage3,
         price: 150,
         rating: 2,
         stock: 10,
@@ -148,7 +148,7 @@ export const Data = [
     {
         id: 18,
         title: "Portable Audio",
-        imageUrl: ProductImage2,
+        image: ProductImage2,
         price: 150,
         rating: 4,
         stock: 10,
@@ -156,7 +156,7 @@ export const Data = [
     {
         id: 19,
         title: "Portable Audio",
-        imageUrl: ProductImage,
+        image: ProductImage,
         price: 150,
         rating: 4,
         stock: 10,
@@ -164,7 +164,7 @@ export const Data = [
     {
         id: 20,
         title: "Portable Audio",
-        imageUrl: ProductImage,
+        image: ProductImage,
         price: 150,
         rating: 3,
         stock: 10,

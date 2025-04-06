@@ -14,7 +14,7 @@ const products = [
     { id: 6, src: product_2, alt: "Product 6" },
 ];
 
-export default function Product() {
+export default function Product({ product }) {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [startIndex, setStartIndex] = useState(0);
     const slideRef = useRef(null);
@@ -57,10 +57,10 @@ export default function Product() {
                     {products.map((item, index) => (
                         <div
                             key={item.id}
-                            className="w-full h-full flex justify-center items-center"
+                            className="w-full h-[40rem] flex justify-center items-center"
                         >
                             <img
-                                src={item.src}
+                                src={product.image}
                                 alt={item.alt}
                                 className={`w-full h-full object-cover transition-transform duration-300 ${
                                     selectedIndex === index ? "scale-105" : ""

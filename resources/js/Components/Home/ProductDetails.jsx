@@ -13,7 +13,7 @@ const categories = [
     "Uncategorized",
 ];
 
-export default function ProductDetails() {
+export default function ProductDetails({ product }) {
     const [quantity, setQuantity] = useState(1);
 
     const increaseQuantity = () => setQuantity((prev) => prev + 1);
@@ -24,20 +24,18 @@ export default function ProductDetails() {
             <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-0 lg:max-w-8xl">
                 <div className="lg:grid lg:grid-cols-7 lg:items-start lg:gap-x-8">
                     <div className="lg:col-span-3">
-                        <Product />
+                        <Product product={product} />
                     </div>
 
                     <div className="mt-8 lg:mt-0 lg:col-span-4">
                         <h1 className="font-medium text-3xl text-gray-700">
-                            Sit voluptatem rhoncus
+                            {product.name}
                         </h1>
                         <p className="font-semibold text-xl py-4 text-gray-600">
-                            $50.00
+                            ${product.price}
                         </p>
                         <p className="text-gray-600 text-sm max-w-sm leading-7">
-                            Lorem ipsum dolor sit amet, consetetur sadipscing
-                            elitr. Consetetur sadipscing elitr, sed diam nonumy
-                            eirmod. Suspendisse ultrices mauris diam
+                            {product.description}
                         </p>
 
                         <div className="mt-8">

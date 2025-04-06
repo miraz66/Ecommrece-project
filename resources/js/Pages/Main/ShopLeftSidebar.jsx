@@ -1,10 +1,8 @@
 import Header from "@/Components/Header";
-import { Head } from "@inertiajs/react";
+import { Head, useForm } from "@inertiajs/react";
 import React, { useState } from "react";
 import banner from "@/assets/img-sidebar.jpg";
 import SimpleProductCard from "@/Components/Home/SimpleProductCard";
-import ProductImage from "@/assets/products-1-min.jpg";
-import { Data } from "@/assets/ProductData";
 import ProductCard from "@/Components/Home/ProductCard";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
@@ -22,32 +20,6 @@ const Categories = [
     { name: "Women's" },
 ];
 
-const products = [
-    {
-        id: 1,
-        title: "Basic Tee",
-        imageUrl: ProductImage,
-        discount: 20,
-        rating: 0,
-        price: 400,
-    },
-    {
-        id: 2,
-        title: "Basic Tee",
-        imageUrl: ProductImage,
-        rating: 4,
-        price: 400,
-    },
-    {
-        id: 3,
-        title: "Basic Tee",
-        imageUrl: ProductImage,
-        discount: 20,
-        rating: 1,
-        price: 400,
-    },
-];
-
 const productVariants = {
     hidden: { opacity: 0, y: 50 }, // Start from below
     visible: {
@@ -57,8 +29,13 @@ const productVariants = {
     },
 };
 
-export default function ShopLeftSidebar() {
+export default function ShopLeftSidebar({ products }) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const { get } = useForm();
+
+    const showProduct = (id) => {
+        get(route("product.show", id));
+    };
 
     return (
         <>
@@ -136,12 +113,15 @@ export default function ShopLeftSidebar() {
                             />
 
                             <div className="space-y-4">
-                                {products.map((item) => (
-                                    <SimpleProductCard
-                                        key={item.id}
-                                        {...item}
-                                    />
-                                ))}
+                                {products
+                                    .sort(() => 0.5 - Math.random()) // Shuffle the array randomly
+                                    .slice(0, 2) // Take first 2 elements after shuffling
+                                    .map((item) => (
+                                        <SimpleProductCard
+                                            key={item.id}
+                                            {...item}
+                                        />
+                                    ))}
                             </div>
                         </div>
                     </div>
@@ -162,15 +142,16 @@ export default function ShopLeftSidebar() {
 
                     {/* Products Grid with Scroll Animation */}
                     <div className="col-span-4 lg:col-span-3 grid grid-cols-2 lg:grid-cols-3 auto-rows-auto gap-6 lg:gap-8 px-4 lg:px-0">
-                        {Data.map((item) => (
+                        {products.map((item) => (
                             <motion.div
                                 key={item.id}
                                 initial="hidden"
                                 whileInView="visible"
                                 viewport={{ once: true, amount: 0.3 }}
                                 variants={productVariants}
+                                onClick={() => showProduct(item.id)}
                             >
-                                <ProductCard {...item} />
+                                <ProductCard {...item} className="h-96" />
                             </motion.div>
                         ))}
                     </div>

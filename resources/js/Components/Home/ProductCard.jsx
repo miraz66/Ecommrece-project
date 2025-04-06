@@ -7,8 +7,18 @@ import {
 import { StarIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import { animations } from "@/utils/animationUtils";
+import clsx from "clsx";
 
-const ProductCard = ({ title, imageUrl, price, discount, stock, rating }) => {
+const ProductCard = ({
+    id,
+    name,
+    image,
+    price,
+    discount_price,
+    stock,
+    rating,
+    className,
+}) => {
     return (
         <>
             <motion.div
@@ -25,9 +35,12 @@ const ProductCard = ({ title, imageUrl, price, discount, stock, rating }) => {
                         <motion.img
                             whileHover={{ scale: 1.07 }}
                             whileTap={{ scale: 0.8 }}
-                            src={imageUrl}
+                            src={image}
                             alt="Front of men's Basic Tee in black."
-                            className="object-cover w-full h-full"
+                            className={clsx(
+                                "object-cover w-full",
+                                className ? className : "h-full"
+                            )}
                         />
                     </div>
 
@@ -66,17 +79,17 @@ const ProductCard = ({ title, imageUrl, price, discount, stock, rating }) => {
                         </div>
                     </div>
 
-                    {/* Price Discount */}
-                    {discount && (
+                    {/* Price discount_price */}
+                    {discount_price && (
                         <div className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 shadow-md shadow-black group-hover:opacity-0 opacity-100 transition-all transform duration-300 ease-in-out">
                             <div className="flex items-center">
-                                <span className="mr-1">-{discount}%</span>
+                                <span className="mr-1">-{discount_price}%</span>
                             </div>
                         </div>
                     )}
 
                     {/* Out of Stock */}
-                    {stock === 0 && (
+                    {stock <= 10 && (
                         <div className="absolute top-1/2 left-1/2 w-full transform -translate-x-1/2 -translate-y-1/2 group-hover:opacity-0 opacity-100 transition-all duration-300 ease-in-out">
                             <p className="text-base uppercase text-center text-red-600 font-bold bg-gray-200 px-10 py-1">
                                 Out of Stock
@@ -86,7 +99,7 @@ const ProductCard = ({ title, imageUrl, price, discount, stock, rating }) => {
                 </div>
 
                 <div className="pt-4 lg:pt-6 relative">
-                    <h3 className="text-gray-800 pb-1.5">{title}</h3>
+                    <h3 className="text-gray-800 pb-1.5">{name}</h3>
                     <div className="flex gap-1">
                         {[1, 2, 3, 4, 5].map((item) => {
                             return rating >= item ? (
@@ -103,15 +116,15 @@ const ProductCard = ({ title, imageUrl, price, discount, stock, rating }) => {
                         })}
                     </div>
                     <div className="flex gap-2 mt-2 transition-all transform duration-100 ease-in-out group-hover:opacity-0 opacity-100">
-                        {discount && (
+                        {discount_price && (
                             <p className="text-gray-400 line-through">
                                 ${price}
                             </p>
                         )}
                         <p className="font-semibold text-gray-800">
                             $
-                            {discount
-                                ? price - (price * discount) / 100
+                            {discount_price
+                                ? price - (price * discount_price) / 100
                                 : price}
                         </p>
                     </div>

@@ -2,7 +2,7 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import { animations } from "@/utils/animationUtils";
 
-const SimpleProductCard = ({ title, imageUrl, price, discount, rating }) => {
+const SimpleProductCard = ({ title, image, price, discount, rating }) => {
     return (
         <>
             <motion.div
@@ -17,7 +17,7 @@ const SimpleProductCard = ({ title, imageUrl, price, discount, rating }) => {
                 <div className="flex gap-6">
                     <div className="h-36 w-32">
                         <img
-                            src={imageUrl}
+                            src={image}
                             alt="Front of men's Basic Tee in black."
                             className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105 cursor-pointer"
                         />

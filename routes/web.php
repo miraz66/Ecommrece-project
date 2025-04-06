@@ -1,23 +1,18 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return inertia('Home');
-});
+// routes/products.php
+Route::get('/', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/shop-left-sidebar', [ProductController::class, 'shopLeftSidebar'])->name('products.shopLeftSidebar');
 
-Route::get('/shop-left-sidebar', function () {
-    return inertia('ShopLeftSidebar');
-});
 
 Route::get('/blog', function () {
     return inertia('Blog');
-});
-
-Route::get('/show', function () {
-    return inertia('ShowProduct');
 });
 
 Route::get('/test', function () {

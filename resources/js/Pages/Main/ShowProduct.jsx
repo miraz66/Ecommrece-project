@@ -6,7 +6,9 @@ import RelatedProducts from "@/Components/RelatedProducts";
 import { Head } from "@inertiajs/react";
 import React, { useState } from "react";
 
-export default function ShowProduct() {
+export default function ShowProduct({ product, products }) {
+    console.log(products);
+
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
@@ -24,9 +26,9 @@ export default function ShowProduct() {
                 </h1>
             </div>
 
-            <ProductDetails />
+            <ProductDetails product={product} />
             <BoughtTogether />
-            <RelatedProducts />
+            <RelatedProducts products={products} />
             <Footer />
         </div>
     );

@@ -15,7 +15,7 @@ export default function CartDropDown({ dropdownOpen }) {
         <>
             <div
                 className={clsx(
-                    "absolute right-0 top-[68px] overflow-hidden bg-white transition-all duration-700 ease-in-out",
+                    "absolute right-0 top-[68px] overflow-hidden bg-white transition-all duration-700 ease-in-out shadow-xl",
                     dropdownOpen === "cart" ? "max-h-96" : "max-h-0"
                 )}
             >

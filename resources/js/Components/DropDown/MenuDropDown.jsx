@@ -18,7 +18,7 @@ export default function MenuDropDown({ dropdownOpen }) {
         <>
             <div
                 className={clsx(
-                    "absolute right-0 top-[48px] overflow-hidden bg-white transition-all duration-700 ease-in-out",
+                    "absolute right-0 top-[48px] overflow-hidden bg-white transition-all duration-700 ease-in-out shadow-xl",
                     dropdownOpen === "menu" ? "max-h-96" : "max-h-0"
                 )}
             >

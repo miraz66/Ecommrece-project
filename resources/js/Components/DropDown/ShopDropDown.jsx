@@ -47,7 +47,7 @@ export default function ShopDropDown({ item, dropdownOpen }) {
                 {item.name === "Shop" && (
                     <div
                         className={clsx(
-                            "absolute right-0 transform -translate-x-1/3 -inset-x-3 z-10 w-screen overflow-hidden bg-white transition-all duration-700 ease-in-out",
+                            "absolute right-0 transform -translate-x-1/3 -inset-x-3 z-10 w-screen overflow-hidden bg-white transition-all duration-700 ease-in-out shadow-2xl",
                             dropdownOpen === item.name ? "max-h-96" : "max-h-0"
                         )}
                     >

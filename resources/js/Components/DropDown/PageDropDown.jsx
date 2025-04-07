@@ -17,7 +17,7 @@ export default function PageDropDown({ item, dropdownOpen }) {
                 {item.name === "Page" && (
                     <div
                         className={clsx(
-                            "absolute left-0 overflow-hidden bg-white transition-all duration-700 ease-in-out",
+                            "absolute left-0 overflow-hidden bg-white transition-all duration-700 ease-in-out shadow-2xl",
                             dropdownOpen === item.name ? "max-h-96" : "max-h-0"
                         )}
                     >

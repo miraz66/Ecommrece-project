@@ -1,4 +1,3 @@
-import { Data } from "@/assets/ProductData";
 import ProductCard from "./Home/ProductCard";
 
 export default function RelatedProducts({ products }) {

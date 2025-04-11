@@ -18,14 +18,12 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next, string $role): Response
     {
-        dd($request);
+        dd($role);
 
-        // Check if the user is logged in and has the specified role
         if (Auth::check() && Auth::user()->role === $role) {
             return $next($request);
         }
 
-        // If the user doesn't have the required role, redirect to home or an error page
         return redirect('/')->with('error', 'You do not have access to this page.');
     }
 }

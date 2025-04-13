@@ -9,7 +9,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use Illuminate\Support\Facades\Route;
 
 // routes/products.php
-Route::get('/', [ProductController::class, 'index'])->name('products.index')->middleware('auth', 'role:user');
+Route::get('/', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/shop-left-sidebar', [ProductController::class, 'shopLeftSidebar'])->name('products.shopLeftSidebar');
 
@@ -22,7 +22,7 @@ Route::get('/test', function () {
 });
 
 // Admin routes
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     // Route::get('/admin/products', [ProductController::class, 'adminIndex'])->name('admin.products.index');
     // Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');

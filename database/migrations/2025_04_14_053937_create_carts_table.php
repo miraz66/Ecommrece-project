@@ -18,10 +18,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('image');
             $table->decimal('price', 8, 2);
-            $table->integer('discount_price')->nullable();
+            $table->integer('discount')->nullable();
             $table->integer('stock')->default(0);
             $table->integer('rating')->default(0);
             $table->text('description')->nullable();
+            $table->integer('quantity')->default(1);
             $table->timestamps();
         });
     }

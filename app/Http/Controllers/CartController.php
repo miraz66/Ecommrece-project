@@ -30,7 +30,7 @@ class CartController extends Controller
         if ($card) {
             $card->quantity += 1;
             $card->save();
-            return response()->json(['message' => 'Product added to cart successfully']);
+            return response()->json(['message' => 'Product quantity updated successfully']);
         }
 
         Cart::create([
@@ -45,7 +45,7 @@ class CartController extends Controller
             'description' => $product->description,
         ]);
 
-        return response()->json(['message' => 'Product added to cart successfully']);
+        return;
     }
 
     /**

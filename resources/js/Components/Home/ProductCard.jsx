@@ -8,7 +8,7 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import { animations } from "@/utils/animationUtils";
 import clsx from "clsx";
-import { useForm } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
 
 const ProductCard = ({
     id,
@@ -91,7 +91,7 @@ const ProductCard = ({
                         </div>
                     </div>
 
-                    {/* Price discount_price */}
+                    {/* Price discount */}
                     {discount_price && (
                         <div className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 shadow-md shadow-black group-hover:opacity-0 opacity-100 transition-all transform duration-300 ease-in-out">
                             <div className="flex items-center">

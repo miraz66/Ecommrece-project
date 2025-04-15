@@ -13,7 +13,7 @@ class Cart extends Model
         'name',
         'image',
         'price',
-        'discount_price',
+        'discount',
         'stock',
         'rating',
         'description',

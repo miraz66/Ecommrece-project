@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -31,6 +32,10 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     // Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('admin.products.update');
     // Route::delete('/admin/products/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
 });
+
+//routes/cart.php
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
+Route::get('/remove-from-cart', [CartController::class, 'removeFromCart'])->name('remove-from-cart');
 
 // Auth routes
 // Route::middleware(['guest'])->group(function () {

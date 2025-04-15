@@ -8,6 +8,7 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import { animations } from "@/utils/animationUtils";
 import clsx from "clsx";
+import { useForm } from "@inertiajs/react";
 
 const ProductCard = ({
     id,
@@ -18,7 +19,17 @@ const ProductCard = ({
     stock,
     rating,
     className,
+    showProduct,
 }) => {
+    const { post } = useForm({
+        product_id: id,
+    });
+
+    // add to cart function
+    const addToCart = () => {
+        post(route("add-to-cart"));
+    };
+
     return (
         <>
             <motion.div
@@ -36,6 +47,7 @@ const ProductCard = ({
                             whileHover={{ scale: 1.07 }}
                             whileTap={{ scale: 0.8 }}
                             src={image}
+                            onClick={() => showProduct(id)}
                             alt="Front of men's Basic Tee in black."
                             className={clsx(
                                 "object-cover w-full",
@@ -131,12 +143,15 @@ const ProductCard = ({
 
                     <div className="absolute w-full left-0 bottom-0 transition-all transform duration-300 ease-in-out group-hover:translate-y-0 translate-y-3 group-hover:opacity-100 opacity-0">
                         <div className="flex justify-between pr-2 pt-2">
-                            <div className="flex gap-1 items-end group/cart cursor-pointer duration-200 ease-in-out">
+                            <button
+                                onClick={() => addToCart(id)}
+                                className="flex gap-1 items-end group/cart cursor-pointer duration-200 ease-in-out"
+                            >
                                 <ShoppingBagIcon className="w-4 lg:w-5 h-4 lg:h-5 text-gray-800 group-hover/cart:text-red-500" />
                                 <p className="text-xs lg:text-sm text-gray-800 group-hover/cart:text-red-500">
                                     Add to Cart
                                 </p>
-                            </div>
+                            </button>
 
                             <div className="flex gap-1 items-end group/quick cursor-pointer">
                                 <MagnifyingGlassIcon className="w-4 lg:w-5 h-4 lg:h-5 text-gray-800 group-hover/quick:text-red-500" />

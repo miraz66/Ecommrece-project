@@ -149,9 +149,12 @@ export default function ShopLeftSidebar({ products }) {
                                 whileInView="visible"
                                 viewport={{ once: true, amount: 0.3 }}
                                 variants={productVariants}
-                                onClick={() => showProduct(item.id)}
                             >
-                                <ProductCard {...item} className="h-96" />
+                                <ProductCard
+                                    {...item}
+                                    showProduct={showProduct}
+                                    className="h-96"
+                                />
                             </motion.div>
                         ))}
                     </div>

@@ -29,7 +29,7 @@ const productVariants = {
     },
 };
 
-export default function ShopLeftSidebar({ products }) {
+export default function ShopLeftSidebar({ products, carts }) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { get } = useForm();
 
@@ -46,6 +46,7 @@ export default function ShopLeftSidebar({ products }) {
                     <Header
                         mobileMenuOpen={mobileMenuOpen}
                         setMobileMenuOpen={setMobileMenuOpen}
+                        carts={carts}
                     />
                 </div>
 

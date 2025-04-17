@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -13,7 +15,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return inertia('Main/Home', compact('products'));
+        $carts = $this->getUserCart();
+        return inertia('Main/Home', ['products' => $products, 'carts' => $carts]);
     }
 
     /**
@@ -44,12 +47,13 @@ class ProductController extends Controller
         //     ->get();
 
         $products = Product::all();
-
+        $carts = $this->getUserCart();
 
         return inertia('Main/ShowProduct', [
             'product' => $product,
             // 'relatedProducts' => $relatedProducts,
             'products' => $products,
+            'carts' => $carts,
         ]);
     }
 
@@ -81,31 +85,66 @@ class ProductController extends Controller
     {
         $search = $request->input('search');
         $products = Product::where('name', 'like', '%' . $search . '%')->get();
-        return inertia('Main/Home', compact('products'));
+        $carts = $this->getUserCart();
+
+        return inertia('Main/Home', [
+            'products' => $products,
+            'carts' => $carts,
+        ]);
     }
 
     public function filter(Request $request)
     {
         $category = $request->input('category');
         $products = Product::where('category', $category)->get();
-        return inertia('Main/Home', compact('products'));
+        $carts = $this->getUserCart();
+        return inertia('Main/Home', [
+            'products' => $products,
+            'carts' => $carts,
+        ]);
     }
     public function sort(Request $request)
     {
         $sort = $request->input('sort');
         $products = Product::orderBy($sort, 'asc')->get();
-        return inertia('Main/Home', compact('products'));
+        $carts = $this->getUserCart();
+
+        return inertia('Main/Home', [
+            'products' => $products,
+            'carts' => $carts,
+        ]);
     }
     public function paginate(Request $request)
     {
         $perPage = $request->input('per_page', 10);
         $products = Product::paginate($perPage);
-        return inertia('Main/Home', compact('products'));
+        $carts = $this->getUserCart();
+
+        return inertia('Main/Home', [
+            'products' => $products,
+            'carts' => $carts,
+        ]);
     }
 
     public function shopLeftSidebar()
     {
-        $products = Product::all();
-        return inertia('Main/ShopLeftSidebar', compact('products'));
+        $products = Product::get();
+        $carts = Cart::get();
+
+        return inertia('Main/ShopLeftSidebar', [
+            'products' => $products,
+            'carts' => $carts,
+        ]);
+    }
+
+    // private function
+    private function getUserCart()
+    {
+        // this is the cart for the logged-in user
+        $user = Auth::user();
+        if (!$user) {
+            return [];
+        }
+        return Cart::where('user_id', $user->id)->get();
     }
 }

@@ -6,9 +6,7 @@ import RelatedProducts from "@/Components/RelatedProducts";
 import { Head } from "@inertiajs/react";
 import React, { useState } from "react";
 
-export default function ShowProduct({ product, products }) {
-    console.log(products);
-
+export default function ShowProduct({ product, products, carts }) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
@@ -18,6 +16,7 @@ export default function ShowProduct({ product, products }) {
             <Header
                 mobileMenuOpen={mobileMenuOpen}
                 setMobileMenuOpen={setMobileMenuOpen}
+                carts={carts}
             />
 
             <div className="py-40 max-w-3xl mx-auto">

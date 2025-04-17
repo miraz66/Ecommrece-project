@@ -12,8 +12,6 @@ const DropDownValue = [
 ];
 
 export default function MenuDropDown({ dropdownOpen }) {
-    console.log(dropdownOpen);
-
     return (
         <>
             <div

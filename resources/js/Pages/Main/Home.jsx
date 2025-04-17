@@ -10,12 +10,12 @@ import SummerDiscountBlog from "@/Components/Home/SummerDiscountBlog";
 import Opportunity from "@/Components/Opportunity";
 import { Head } from "@inertiajs/react";
 
-export default function Home({ products }) {
+export default function Home({ products, carts }) {
     return (
         <>
             <Head title="Home" />
             <div className="bg-white">
-                <Hero />
+                <Hero carts={carts} />
                 <Opportunity />
                 <PopularCategories />
                 <ProductGrid />

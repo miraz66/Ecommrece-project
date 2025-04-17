@@ -22,7 +22,7 @@ const navigation = [
     { name: "About us", href: "#" },
 ];
 
-export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
+export default function Header({ mobileMenuOpen, setMobileMenuOpen, carts }) {
     const [dropdownOpen, setDropdownOpen] = useState("");
 
     return (
@@ -44,10 +44,10 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                     </div>
 
                     <div
-                        onMouseMove={() => {
+                        onMouseOver={() => {
                             setDropdownOpen("cart");
                         }}
-                        onMouseLeave={() => {
+                        onMouseOut={() => {
                             setDropdownOpen("");
                         }}
                         className="relative py-5"
@@ -63,7 +63,10 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
                             </p>
                         </div>
 
-                        <CartDropDown item="cart" dropdownOpen={dropdownOpen} />
+                        <CartDropDown
+                            carts={carts}
+                            dropdownOpen={dropdownOpen}
+                        />
                     </div>
                 </div>
 

@@ -1,16 +1,7 @@
 import { Link } from "@inertiajs/react";
 import clsx from "clsx";
-const DropDownValue = [
-    "About Us",
-    "Privacy Policy",
-    "Frequently Questions",
-    "Contact Us",
-    "Login",
-    "Register",
-    "Error 404",
-];
 
-export default function CartDropDown({ dropdownOpen }) {
+export default function CartDropDown({ dropdownOpen, carts }) {
     return (
         <>
             <div
@@ -20,9 +11,15 @@ export default function CartDropDown({ dropdownOpen }) {
                 )}
             >
                 <div className="p-6 flex flex-col gap-2 w-80">
-                    <p className="text-sm text-gray-700 dark:text-gray-400 dark:hover:text-white">
-                        No products in the cart.
-                    </p>
+                    {carts?.length > 0 ? (
+                        carts.map((cart, index) => (
+                            <div key={index} className="text-black">
+                                {cart.name}
+                            </div>
+                        ))
+                    ) : (
+                        <div className="text-black">Your cart is empty</div>
+                    )}
                 </div>
             </div>
         </>

@@ -13,7 +13,7 @@ export default function Hero({ carts }) {
                 carts={carts}
             />
 
-            <ImageSlider />
+            {/* <ImageSlider /> */}
         </div>
     );
 }

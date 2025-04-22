@@ -1,6 +1,6 @@
 import Header from "@/Components/Header";
 import { Head, useForm } from "@inertiajs/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import banner from "@/assets/img-sidebar.jpg";
 import SimpleProductCard from "@/Components/Home/SimpleProductCard";
 import ProductCard from "@/Components/Home/ProductCard";

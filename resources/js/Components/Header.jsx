@@ -43,7 +43,7 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen, carts }) {
                         </span>
                     </div>
 
-                    <div
+                    {/* <div
                         onMouseOver={() => {
                             setDropdownOpen("cart");
                         }}
@@ -63,11 +63,14 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen, carts }) {
                             </p>
                         </div>
 
-                        <CartDropDown
-                            carts={carts}
-                            dropdownOpen={dropdownOpen}
-                        />
-                    </div>
+                        {dropdownOpen === "cart" && (
+                            <CartDropDown
+                                item="cart"
+                                dropdownOpen={dropdownOpen}
+                                carts={carts}
+                            />
+                        )}
+                    </div> */}
                 </div>
 
                 <div className="flex lg:flex-1 justify-between items-center">

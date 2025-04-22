@@ -130,7 +130,7 @@ class ProductController extends Controller
     public function shopLeftSidebar()
     {
         $products = Product::get();
-        $carts = Cart::get();
+        $carts = $this->getUserCart();
 
         return inertia('Main/ShopLeftSidebar', [
             'products' => $products,
@@ -146,6 +146,7 @@ class ProductController extends Controller
         if (!$user) {
             return [];
         }
+
         return Cart::where('user_id', $user->id)->get();
     }
 }

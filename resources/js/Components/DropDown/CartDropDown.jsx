@@ -1,4 +1,3 @@
-import { Link } from "@inertiajs/react";
 import clsx from "clsx";
 
 export default function CartDropDown({ dropdownOpen, carts }) {

@@ -16,6 +16,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
         $carts = $this->getUserCart();
+
         return inertia('Main/Home', ['products' => $products, 'carts' => $carts]);
     }
 

@@ -42,7 +42,7 @@ export default function ShopLeftSidebar({ products, carts }) {
             <Head title="shop-left-sidebar" />
 
             <div className="bg-white">
-                <div className="bg-slate-900 h-[67px]">
+                <div className="bg-slate-900 h-[85px]">
                     <Header
                         mobileMenuOpen={mobileMenuOpen}
                         setMobileMenuOpen={setMobileMenuOpen}

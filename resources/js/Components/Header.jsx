@@ -37,13 +37,12 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen, carts }) {
                             aria-hidden="true"
                             className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
                         />
-
                         <span className="absolute -bottom-1 -right-1 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
                             0
                         </span>
                     </div>
 
-                    {/* <div
+                    <div
                         onMouseOver={() => {
                             setDropdownOpen("cart");
                         }}
@@ -70,7 +69,7 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen, carts }) {
                                 carts={carts}
                             />
                         )}
-                    </div> */}
+                    </div>
                 </div>
 
                 <div className="flex lg:flex-1 justify-between items-center">
@@ -187,7 +186,7 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen, carts }) {
                             onMouseLeave={() => {
                                 setDropdownOpen("");
                             }}
-                            className="relative py-5"
+                            className="relative h-[85px] flex items-center justify-center"
                         >
                             <div className="relative">
                                 <ShoppingCartIcon
@@ -196,13 +195,20 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen, carts }) {
                                 />
 
                                 <p className="absolute -bottom-1 -right-1 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
-                                    0
+                                    {carts === null ||
+                                    carts.length === 0 ||
+                                    carts.length === undefined
+                                        ? 0
+                                        : carts.length}
                                 </p>
                             </div>
-                            <CartDropDown
-                                item="cart"
-                                dropdownOpen={dropdownOpen}
-                            />
+                            {dropdownOpen === "cart" && (
+                                <CartDropDown
+                                    item="cart"
+                                    dropdownOpen={dropdownOpen}
+                                    carts={carts}
+                                />
+                            )}
                         </div>
 
                         <div

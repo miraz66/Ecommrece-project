@@ -35,7 +35,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 
 //routes/cart.php
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
-Route::get('/remove-from-cart', [CartController::class, 'removeFromCart'])->name('remove-from-cart');
+Route::delete('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('remove-from-cart');
 
 // Auth routes
 // Route::middleware(['guest'])->group(function () {

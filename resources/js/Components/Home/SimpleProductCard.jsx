@@ -50,7 +50,10 @@ const SimpleProductCard = ({ title, image, price, discount, rating }) => {
                             <p className="font-semibold text-gray-800">
                                 $
                                 {discount
-                                    ? price - (price * discount) / 100
+                                    ? (
+                                          price -
+                                          (price * discount) / 100
+                                      ).toFixed(2)
                                     : price}
                             </p>
                         </div>

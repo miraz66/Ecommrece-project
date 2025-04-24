@@ -1,7 +1,8 @@
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import { HeartIcon } from "lucide-react";
-import React, { useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import Product from "../Product";
+import { useForm } from "@inertiajs/react";
 
 const categories = [
     "Driveshafts",
@@ -15,9 +16,26 @@ const categories = [
 
 export default function ProductDetails({ product }) {
     const [quantity, setQuantity] = useState(1);
+    const { data, setData, post } = useForm({
+        product_id: product.id,
+        quantity: quantity,
+    });
 
     const increaseQuantity = () => setQuantity((prev) => prev + 1);
     const decreaseQuantity = () => setQuantity((prev) => Math.max(1, prev - 1));
+
+    const addToCart = () => {
+        post(route("add-to-cart"), {
+            ...data,
+        });
+
+        // Reset quantity to 1 after adding to cart
+        setQuantity(1);
+    };
+
+    useEffect(() => {
+        setData("quantity", quantity);
+    }, [quantity]);
 
     return (
         <div className="bg-white">
@@ -62,7 +80,10 @@ export default function ProductDetails({ product }) {
                                 </div>
 
                                 {/* Add to Cart Button */}
-                                <button className="bg-red-600 text-white px-8 py-2.5 hover:bg-gray-800 transition">
+                                <button
+                                    onClick={addToCart}
+                                    className="bg-red-600 text-white px-8 py-2.5 hover:bg-gray-800 transition"
+                                >
                                     Add to Cart
                                 </button>
                             </div>

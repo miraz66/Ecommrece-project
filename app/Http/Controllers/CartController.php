@@ -18,23 +18,28 @@ class CartController extends Controller
             return redirect('/login')->with('message', 'Please login to add products to cart');
         }
 
-        $product = Product::find($request->product_id);
-        if (!$product) {
-            return response()->json(['message' => 'Product not found'], 404);
-        }
+        $request->validate([
+            'product_id' => 'required|integer|exists:products,id',
+            'quantity' => 'nullable|integer|min:1',
+        ]);
 
-        $card = Cart::where('user_id', Auth::user()->id)
+        $product = Product::find($request->product_id);
+
+        $cart = Cart::where('user_id', Auth::id())
             ->where('product_id', $product->id)
             ->first();
 
-        if ($card) {
-            $card->quantity += 1;
-            $card->save();
-            return response()->json(['message' => 'Product quantity updated successfully']);
+        $quantity = $request->quantity ?? 1;
+        if ($cart) {
+            $cart->quantity += $quantity;
+            $cart->save();
+
+            return redirect()->back()->with('message', 'Product quantity updated in cart successfully');
         }
 
+
         Cart::create([
-            'user_id' => Auth::user()->id,
+            'user_id' => Auth::id(),
             'product_id' => $product->id,
             'name' => $product->name,
             'image' => $product->image,
@@ -43,16 +48,26 @@ class CartController extends Controller
             'stock' => $product->stock,
             'rating' => $product->rating,
             'description' => $product->description,
+            'quantity' => $quantity, // 👈 Added this
         ]);
 
-        return;
+        return redirect()->back()->with('message', 'Product added to cart successfully');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cart $card)
+    public function removeFromCart(Request $request)
     {
-        //
+
+        $card = Cart::find($request->id);
+        if (!$card) {
+            return redirect()->back()->with('message', 'Product not found in cart');
+        }
+
+        $card->delete();
+
+        return redirect()->back()->with('message', 'Product removed from cart successfully');
     }
 }

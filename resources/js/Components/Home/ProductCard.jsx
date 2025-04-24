@@ -23,6 +23,7 @@ const ProductCard = ({
 }) => {
     const { post } = useForm({
         product_id: id,
+        quantity: 1,
     });
 
     // add to cart function
@@ -92,7 +93,7 @@ const ProductCard = ({
                     </div>
 
                     {/* Price discount */}
-                    {discount_price && (
+                    {discount_price > 0 && (
                         <div className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 shadow-md shadow-black group-hover:opacity-0 opacity-100 transition-all transform duration-300 ease-in-out">
                             <div className="flex items-center">
                                 <span className="mr-1">-{discount_price}%</span>
@@ -128,7 +129,7 @@ const ProductCard = ({
                         })}
                     </div>
                     <div className="flex gap-2 mt-2 transition-all transform duration-100 ease-in-out group-hover:opacity-0 opacity-100">
-                        {discount_price && (
+                        {discount_price > 0 && (
                             <p className="text-gray-400 line-through">
                                 ${price}
                             </p>
@@ -136,7 +137,10 @@ const ProductCard = ({
                         <p className="font-semibold text-gray-800">
                             $
                             {discount_price
-                                ? price - (price * discount_price) / 100
+                                ? (
+                                      price -
+                                      (price * discount_price) / 100
+                                  ).toFixed(2)
                                 : price}
                         </p>
                     </div>

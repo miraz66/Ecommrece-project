@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('stock')->default(0);
             $table->integer('rating')->default(0);
             $table->text('description')->nullable();
-            $table->integer('quantity')->default(1);
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

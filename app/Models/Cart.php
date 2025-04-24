@@ -17,6 +17,7 @@ class Cart extends Model
         'stock',
         'rating',
         'description',
+        'quantity',
     ];
     public function user()
     {

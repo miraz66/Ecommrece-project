@@ -21,14 +21,14 @@ const ProductCard = ({
     className,
     showProduct,
 }) => {
-    const { post } = useForm({
-        product_id: id,
-        quantity: 1,
-    });
+    const { post } = useForm({});
 
     // add to cart function
     const addToCart = () => {
-        post(route("add-to-cart"));
+        post(route("add-to-cart"), {
+            product_id: id,
+            quantity: 1,
+        });
     };
 
     return (

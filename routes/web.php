@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 // routes/products.php
@@ -36,6 +37,10 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 //routes/cart.php
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
 Route::delete('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('remove-from-cart');
+
+//routes/wishlist.php
+Route::post('/add-to-favorites', [WishlistController::class, 'addToWishlist'])->name('add-to-wishlist');
+Route::delete('/remove-from-wishlist/{id}', [WishlistController::class, 'destroy'])->name('remove-from-wishlist');
 
 // Auth routes
 // Route::middleware(['guest'])->group(function () {

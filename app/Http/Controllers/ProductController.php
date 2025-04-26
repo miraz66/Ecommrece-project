@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -135,6 +136,7 @@ class ProductController extends Controller
         return inertia('Main/ShopLeftSidebar', [
             'products' => $products,
             'carts' => $carts,
+            'wishlists' => $this->getUserWishlist(),
         ]);
     }
 
@@ -148,5 +150,17 @@ class ProductController extends Controller
         }
 
         return Cart::where('user_id', $user->id)->get();
+    }
+
+    // private function get to wishlist
+    private function getUserWishlist()
+    {
+        // this is the wishlist for the logged-in user
+        $user = Auth::user();
+        if (!$user) {
+            return [];
+        }
+
+        return Wishlist::where('user_id', $user->id)->get();
     }
 }

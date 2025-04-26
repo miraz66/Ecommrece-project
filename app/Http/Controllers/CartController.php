@@ -14,7 +14,6 @@ class CartController extends Controller
      */
     public function addToCart(Request $request)
     {
-        dd($request->all());
         if (!Auth::check()) {
             return redirect('/login')->with('message', 'Please login to add products to cart');
         }

@@ -29,7 +29,7 @@ const productVariants = {
     },
 };
 
-export default function ShopLeftSidebar({ products, carts }) {
+export default function ShopLeftSidebar({ products, carts, wishlists }) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { get } = useForm();
 
@@ -153,6 +153,7 @@ export default function ShopLeftSidebar({ products, carts }) {
                             >
                                 <ProductCard
                                     {...item}
+                                    wishlists={wishlists}
                                     showProduct={showProduct}
                                     className="h-96"
                                 />

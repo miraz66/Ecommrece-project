@@ -1,14 +1,13 @@
 import {
-    HeartIcon,
     MagnifyingGlassIcon,
     ShoppingBagIcon,
+    HeartIcon,
 } from "@heroicons/react/24/outline";
-
 import { StarIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import { animations } from "@/utils/animationUtils";
 import clsx from "clsx";
-import { useForm, usePage } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 
 const ProductCard = ({
     id,
@@ -20,15 +19,21 @@ const ProductCard = ({
     rating,
     className,
     showProduct,
+    wishlists,
 }) => {
-    const { post } = useForm({});
+    const { post } = useForm({
+        product_id: id,
+        quantity: 1,
+    });
 
     // add to cart function
     const addToCart = () => {
-        post(route("add-to-cart"), {
-            product_id: id,
-            quantity: 1,
-        });
+        post(route("add-to-cart"));
+    };
+
+    // add to wishlist function
+    const addToWishlist = () => {
+        post(route("add-to-wishlist"));
     };
 
     return (
@@ -59,8 +64,22 @@ const ProductCard = ({
 
                     {/* Wishlist or Compare */}
                     <div className="absolute right-2 top-2 bg-white p-2 space-y-1 shadow transition-all transform duration-300 ease-in-out group-hover:translate-x-0 translate-x-3 group-hover:opacity-100 opacity-0">
-                        <div className="relative group/wishlist cursor-pointer">
-                            <HeartIcon className="w-5 h-5 group-hover/wishlist:text-red-500" />
+                        <div
+                            onClick={addToWishlist}
+                            className="relative group/wishlist cursor-pointer"
+                        >
+                            {wishlists.some((item) => item.id === id) ? (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    className="size-6 text-red-500 group-hover/wishlist:text-gray-500"
+                                >
+                                    <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+                                </svg>
+                            ) : (
+                                <HeartIcon className="w-5 h-5 group-hover/wishlist:text-red-500" />
+                            )}
                             <div className="absolute right-full mr-3.5 top-1/2 transform -translate-y-1/2 group-hover/wishlist:block hidden bg-black text-white text-sm px-3 py-1.5 shadow-lg transition-opacity">
                                 <p>Wishlist</p>
                                 <div className="absolute top-1/2 transform -translate-y-1/2 h-2 w-2 bg-black rotate-45 -right-1"></div>

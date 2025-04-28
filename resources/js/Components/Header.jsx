@@ -31,8 +31,6 @@ export default function Header({
 }) {
     const [dropdownOpen, setDropdownOpen] = useState("");
 
-    console.log("dropdownOpen", dropdownOpen);
-
     return (
         <header className="absolute inset-x-0 top-0 z-50 max-w-8xl mx-auto">
             <nav

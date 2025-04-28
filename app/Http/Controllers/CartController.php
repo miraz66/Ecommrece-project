@@ -60,7 +60,6 @@ class CartController extends Controller
      */
     public function removeFromCart(Request $request)
     {
-
         $card = Cart::find($request->id);
         if (!$card) {
             return redirect()->back()->with('message', 'Product not found in cart');

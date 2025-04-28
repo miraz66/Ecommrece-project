@@ -40,7 +40,7 @@ Route::delete('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'
 
 //routes/wishlist.php
 Route::post('/add-to-favorites', [WishlistController::class, 'addToWishlist'])->name('add-to-wishlist');
-Route::delete('/remove-from-wishlist/{id}', [WishlistController::class, 'destroy'])->name('remove-from-wishlist');
+Route::delete('/remove-from-wishlist/{id}', [WishlistController::class, 'removeFromWishlist'])->name('remove-from-wishlist');
 
 // Auth routes
 // Route::middleware(['guest'])->group(function () {

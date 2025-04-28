@@ -44,9 +44,9 @@ class WishlistController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Wishlist $wishlist)
+    public function removeFromWishlist(Request $request)
     {
-        $wishlist = Wishlist::find($wishlist->id);
+        $wishlist = Wishlist::find($request->id);
 
         if ($wishlist) {
             $wishlist->delete();

@@ -18,7 +18,14 @@ class ProductController extends Controller
         $products = Product::all();
         $carts = $this->getUserCart();
 
-        return inertia('Main/Home', ['products' => $products, 'carts' => $carts]);
+        return inertia(
+            'Main/Home',
+            [
+                'products' => $products,
+                'carts' => $carts,
+                'wishlists' => $this->getUserWishlist()
+            ]
+        );
     }
 
     /**
@@ -56,6 +63,7 @@ class ProductController extends Controller
             // 'relatedProducts' => $relatedProducts,
             'products' => $products,
             'carts' => $carts,
+            'wishlists' => $this->getUserWishlist(),
         ]);
     }
 

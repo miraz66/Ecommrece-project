@@ -13,6 +13,7 @@ import DropDown from "./DropDown/ShopDropDown";
 import PageDropDown from "./DropDown/PageDropDown";
 import CartDropDown from "./DropDown/CartDropDown";
 import MenuDropDown from "./DropDown/MenuDropDown";
+import WishlistDropDown from "./DropDown/WishlistDropDown";
 
 const navigation = [
     { name: "Home", href: "#" },
@@ -22,8 +23,15 @@ const navigation = [
     { name: "About us", href: "#" },
 ];
 
-export default function Header({ mobileMenuOpen, setMobileMenuOpen, carts }) {
+export default function Header({
+    mobileMenuOpen,
+    setMobileMenuOpen,
+    carts,
+    wishlists,
+}) {
     const [dropdownOpen, setDropdownOpen] = useState("");
+
+    console.log("dropdownOpen", dropdownOpen);
 
     return (
         <header className="absolute inset-x-0 top-0 z-50 max-w-8xl mx-auto">
@@ -32,13 +40,25 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen, carts }) {
                 className="flex items-center max-lg:flex-row-reverse justify-between"
             >
                 <div className="lg:hidden flex gap-4 items-center">
-                    <div className="relative">
+                    <div
+                        onMouseOver={() => {
+                            setDropdownOpen("wishlist");
+                        }}
+                        onMouseOut={() => {
+                            setDropdownOpen("");
+                        }}
+                        className="relative"
+                    >
                         <HeartIcon
                             aria-hidden="true"
                             className="size-7 text-gray-100 hover:text-red-600 cursor-pointer duration-200 ease-in-out"
                         />
                         <span className="absolute -bottom-1 -right-1 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
-                            0
+                            {wishlists === null ||
+                            wishlists.length === 0 ||
+                            wishlists.length === undefined
+                                ? "0"
+                                : wishlists.length}
                         </span>
                     </div>
 
@@ -166,7 +186,15 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen, carts }) {
                     </div>
 
                     <div className="flex gap-4 items-center">
-                        <div>
+                        <div
+                            onMouseMove={() => {
+                                setDropdownOpen("wishlist");
+                            }}
+                            onMouseLeave={() => {
+                                setDropdownOpen("");
+                            }}
+                            className="relative h-[85px] flex items-center justify-center"
+                        >
                             <div className="relative">
                                 <HeartIcon
                                     aria-hidden="true"
@@ -174,9 +202,21 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen, carts }) {
                                 />
 
                                 <span className="absolute -bottom-1 -right-1 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-600 rounded-full">
-                                    0
+                                    {wishlists === null ||
+                                    wishlists.length === 0 ||
+                                    wishlists.length === undefined
+                                        ? 0
+                                        : wishlists.length}
                                 </span>
                             </div>
+
+                            {dropdownOpen === "wishlist" && (
+                                <WishlistDropDown
+                                    item="wishlist"
+                                    dropdownOpen={dropdownOpen}
+                                    wishlists={wishlists}
+                                />
+                            )}
                         </div>
 
                         <div

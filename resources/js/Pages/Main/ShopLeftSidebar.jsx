@@ -47,6 +47,7 @@ export default function ShopLeftSidebar({ products, carts, wishlists }) {
                         mobileMenuOpen={mobileMenuOpen}
                         setMobileMenuOpen={setMobileMenuOpen}
                         carts={carts}
+                        wishlists={wishlists}
                     />
                 </div>
 

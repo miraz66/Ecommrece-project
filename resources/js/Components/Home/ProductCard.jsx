@@ -68,7 +68,7 @@ const ProductCard = ({
                             onClick={addToWishlist}
                             className="relative group/wishlist cursor-pointer"
                         >
-                            {wishlists.some((item) => item.id === id) ? (
+                            {wishlists?.some((item) => item.id === id) ? (
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24"

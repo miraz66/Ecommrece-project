@@ -3,6 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import AppCard from "../Components/Test/AppCard";
 import AppDetails from "../Components/Test/AppDetails";
 import ImageGrid from "@/Components/Test/ImageGrid";
+import { PlateEditor } from "@/Components/PlateEditor";
 
 const apps = [
     {
@@ -90,7 +91,9 @@ export default function Test() {
                 </AnimatePresence>
             </div>
 
-            <ImageGrid />
+            {/* <ImageGrid /> */}
+
+            <PlateEditor />
         </div>
     );
 }

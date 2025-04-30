@@ -21,7 +21,7 @@ const Categories = [
 ];
 
 const productVariants = {
-    hidden: { opacity: 0, y: 50 }, // Start from below
+    hidden: { opacity: 0, y: 50 },
     visible: {
         opacity: 1,
         y: 0,
@@ -51,9 +51,9 @@ export default function ShopLeftSidebar({ products, carts, wishlists }) {
                     />
                 </div>
 
-                <div className="max-w-8xl mx-auto grid grid-cols-4 my-14 gap-10">
+                <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-4 gap-10 my-14">
                     {/* Sidebar */}
-                    <div className="hidden lg:block col-span-1">
+                    <aside className="hidden lg:block col-span-1">
                         <h2 className="text-gray-600 uppercase font-semibold text-lg tracking-wide">
                             Categories
                         </h2>
@@ -64,7 +64,7 @@ export default function ShopLeftSidebar({ products, carts, wishlists }) {
                                 <div key={index}>
                                     <a
                                         href="#"
-                                        className="text-sm tracking-wider text-gray-700 hover:text-red-600"
+                                        className="text-base tracking-wider text-gray-700 hover:text-red-600"
                                     >
                                         {data.name}
                                     </a>
@@ -72,17 +72,18 @@ export default function ShopLeftSidebar({ products, carts, wishlists }) {
                             ))}
                         </div>
 
+                        {/* Tags */}
                         <div className="mt-10">
                             <h2 className="text-gray-600 uppercase font-semibold text-lg tracking-wide">
                                 Tags
                             </h2>
                             <div className="mt-2 relative before:absolute after:absolute before:bg-red-600 after:bg-neutral-950/10 before:top-0 before:left-0 before:h-px before:w-12 after:top-0 after:right-0 after:left-12 after:h-px"></div>
 
-                            <div className="grid grid-cols-5 auto-rows-auto mt-8 gap-1.5">
+                            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 auto-rows-auto mt-8 gap-1.5">
                                 {[1, 2, 3, 4, 5, 6].map((index) => (
                                     <button
                                         key={index}
-                                        className="bg-gray-100 py-1.5 text-xs uppercase border rounded text-gray-600 hover:bg-red-500 hover:text-white duration-200 ease-in-out"
+                                        className="bg-gray-100 py-1 text-[10px] sm:text-sm uppercase border rounded text-gray-600 hover:bg-red-500 hover:text-white duration-200 ease-in-out"
                                     >
                                         Tag-0{index}
                                     </button>
@@ -90,6 +91,7 @@ export default function ShopLeftSidebar({ products, carts, wishlists }) {
                             </div>
                         </div>
 
+                        {/* Compare */}
                         <div className="mt-10">
                             <h2 className="text-gray-600 uppercase font-semibold text-lg tracking-wide">
                                 Compare
@@ -110,14 +112,14 @@ export default function ShopLeftSidebar({ products, carts, wishlists }) {
 
                             <img
                                 src={banner}
-                                className="w-full my-14"
+                                className="w-full my-10 sm:my-14 rounded-lg"
                                 alt="Banner"
                             />
 
                             <div className="space-y-4">
                                 {products
-                                    .sort(() => 0.5 - Math.random()) // Shuffle the array randomly
-                                    .slice(0, 2) // Take first 2 elements after shuffling
+                                    .sort(() => 0.5 - Math.random())
+                                    .slice(0, 2)
                                     .map((item) => (
                                         <SimpleProductCard
                                             key={item.id}
@@ -126,10 +128,10 @@ export default function ShopLeftSidebar({ products, carts, wishlists }) {
                                     ))}
                             </div>
                         </div>
-                    </div>
+                    </aside>
 
                     {/* Mobile Search */}
-                    <div className="col-span-4 lg:hidden mx-10 border border-gray-200 flex items-center gap-2 p-1.5 px-3 rounded-lg shadow-sm bg-white">
+                    <div className="col-span-4 lg:hidden mx-4 sm:mx-6 border border-gray-200 flex items-center gap-2 p-2 rounded-lg shadow-sm bg-white">
                         <label htmlFor="search" className="flex items-center">
                             <MagnifyingGlassIcon className="w-6 h-6 text-gray-800" />
                         </label>
@@ -142,8 +144,8 @@ export default function ShopLeftSidebar({ products, carts, wishlists }) {
                         />
                     </div>
 
-                    {/* Products Grid with Scroll Animation */}
-                    <div className="col-span-4 lg:col-span-3 grid grid-cols-2 lg:grid-cols-3 auto-rows-auto gap-6 lg:gap-8 px-4 lg:px-0">
+                    {/* Products Grid */}
+                    <div className="col-span-4 lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-auto gap-6 px-2 sm:px-4 lg:px-0">
                         {products.map((item) => (
                             <motion.div
                                 key={item.id}

@@ -32,7 +32,7 @@ export default function Header({
     const [dropdownOpen, setDropdownOpen] = useState("");
 
     return (
-        <header className="absolute inset-x-0 top-0 z-50 max-w-8xl mx-auto">
+        <header className="absolute inset-x-0 top-0 z-50 max-w-screen-2xl px-4 sm:px-6 lg:px-8 mx-auto">
             <nav
                 aria-label="Global"
                 className="flex items-center max-lg:flex-row-reverse justify-between"

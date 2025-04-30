@@ -24,7 +24,7 @@ export default function WishlistDropDown({ dropdownOpen, wishlists }) {
         <>
             <div
                 className={clsx(
-                    "absolute right-0 max-h-96 top-[85px] w-[22rem] bg-white overflow-y-scroll shadow-xl transform transition-all duration-500 ease-in-out",
+                    "absolute right-0 max-h-96 top-[85px] w-[22rem] bg-white shadow-xl transform transition-all duration-500 ease-in-out",
                     dropdownOpen === "wishlist"
                         ? "max-h-[500px] opacity-100 scale-y-100"
                         : "max-h-0 opacity-0 scale-y-0"
@@ -41,7 +41,7 @@ export default function WishlistDropDown({ dropdownOpen, wishlists }) {
                         </p>
                     </div>
                 ) : (
-                    <div className="flex flex-col w-full bg-gray-100">
+                    <div className="flex flex-col w-full overflow-y-scroll bg-gray-100">
                         {wishlists.map((wishlist) => (
                             <div
                                 key={wishlist.id}
